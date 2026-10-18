@@ -1,0 +1,61 @@
+{
+  "url": "https://tony-zhang-notfound.github.io/Room-Monument-Valley/",
+  "date": "2026-10-18T17:54:00.764Z",
+  "browser": "155.0.8059.39",
+  "kind": "hosted URL browser validation",
+  "deployment": {
+    "project": "ROOM G2",
+    "stage": "Interactive test / G2.5 HOLD",
+    "platform": "GitHub Pages",
+    "sourceCommit": "a5b647c6ae91acbf16cb738748dc1907fbdc3b4c",
+    "playableSha256": "8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab",
+    "indexSha256": "5615ec711e636a68b1fad52e42c6b1e9330221ce6802650220c0c4fe2b0a6389"
+  },
+  "stateAtScreenshot": {
+    "state": {
+      "node": "T",
+      "turn": 0,
+      "camera": 0,
+      "won": false
+    },
+    "busy": false,
+    "paused": false,
+    "player": [
+      1.8,
+      2,
+      0
+    ],
+    "undoCount": 4
+  },
+  "final": {
+    "state": {
+      "node": "S",
+      "turn": 3,
+      "camera": 1,
+      "won": false
+    },
+    "busy": false,
+    "paused": false,
+    "player": [
+      -3.5,
+      0,
+      1.4
+    ],
+    "undoCount": 0
+  },
+  "errors": [],
+  "failedRequests": [],
+  "optionalConsole": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://tony-zhang-notfound.github.io/favicon.ico",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "status": "PASS"
+}
