@@ -1,0 +1,27 @@
+✔ single-file deliverable embeds code and CSS without runtime file dependencies (54.851571ms)
+✔ controller runs forward, pauses mid-animation, wins, undoes, resets and saves (25.022259ms)
+✔ reduced motion commits instantly; reset safely cancels live animation (2.785546ms)
+✔ 21 reachable stable states; all can reach the door and return to safety (60.675395ms)
+✔ full forward route requires both rotated staircase and aligned camera (6.610847ms)
+✔ busy locks commands and saves only the last stable checkpoint (0.399983ms)
+✔ reset invalidates a pending completion token (10.670144ms)
+✔ undo reverses a stable move and restores camera and module state (3.584634ms)
+✔ save schema refuses corrupt, old, fractional, and impossible states (4.140837ms)
+✔ cancel returns to stable state without history pollution (2.230339ms)
+✔ endpoint and bridge edge projection align across three viewport ratios (4.027763ms)
+✔ the character silhouette stays hidden behind the mask throughout the depth transfer (50.736062ms)
+✔ the full rotating module stays clear of fixed architecture through its sweep (21.339255ms)
+✔ normal staircase path maintains foot contact or step clearance (9.759566ms)
+✔ animation paths start and finish at stable anchors, including reverse paths (1.165097ms)
+✔ baseline oracle: exhaustive stable states and commands preserve transitions and saves (17.014708ms)
+✔ T01-T13/T15: explicit expectations on extracted core, pending and recovery (1.096684ms)
+✔ deterministic lifecycle parity: 10000 mixed commands, stale commits, cancel, reset, undo (196.155428ms)
+✔ level constants and bidirectional routes are unchanged (7.98802ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 496.685774

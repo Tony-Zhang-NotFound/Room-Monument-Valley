@@ -1,3 +1,5 @@
+> G2.5 acceptance: see [G2_5_ACCEPTANCE.md](G2_5_ACCEPTANCE.md). Current decision: NO-GO; browser tests blocked, not passed.
+
 # ROOM / 悬梯之间 · G2 v0.2
 
 本轮把资产库 v0.1 的旋转梯、门框、旅人和安全标记组合为一条可以按规则完成的短路径。黑白灰建筑、暗红机关、赭黄终点；无描边和纹理贴图。
