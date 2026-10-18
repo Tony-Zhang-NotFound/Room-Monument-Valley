@@ -4,6 +4,8 @@
 
 后续授权更新（同日）：用户已创建 [Room-Monument-Valley](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley)，并授权非强制同步代码、历史、验收分支与基线标签。此前建议名称 `ROOM-Game` 已由此实际仓库取代。本报告中的本地验收结果不变，代码同步不自动解除 HOLD；远程 CI、预览部署和正式发布没有包含在此授权中。
 
+再次授权与执行更新（同日）：用户另行明确批准测试网站部署。现已通过 GitHub Pages 提供[可交互试玩](https://tony-zhang-notfound.github.io/Room-Monument-Valley/)，Pages 构建及真实线上 Chrome 交互检查通过，见 [部署记录](docs/DEPLOYMENT.md)。这补齐托管与线上浏览器 CI 证据，不替代作者视觉、实机性能或真人试玩验收；G2.5 HOLD 保持不变。下表为原始本地验收分层记录，T21 的最新托管结果以本段和部署记录为准。
+
 ## 范围与版本
 
 - 独立 Git 根：`/workspace/room-g2`；分支：`g2.5-acceptance`。作品集仓库未修改。

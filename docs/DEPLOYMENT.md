@@ -4,6 +4,19 @@ The repository is Public, verified from GitHub's logged-out repository page on 2
 
 Test deployment is explicitly authorised. G2.5 HOLD remains a quality status, not a reason to prohibit a test site. No production release, backend, new gameplay, or assets are part of this work.
 
+## Verified live deployment — 2026-10-18
+
+**Playable test URL:** https://tony-zhang-notfound.github.io/Room-Monument-Valley/
+
+- Deployed source: `a5b647c6ae91acbf16cb738748dc1907fbdc3b4c`.
+- Static `gh-pages` commit: `c141dd6c61c5f164d8140424056f9aefb4c5e285`.
+- GitHub's [Pages build and deployment](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/actions/runs/39151492166) succeeded in 29 seconds. Pushing the new `gh-pages` branch activated this workflow; no manual Pages setting was needed in this repository.
+- The first [hosted browser verification](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/actions/runs/39151637605) succeeded. A real Chrome 155 browser on GitHub's runner opened the HTTPS site, rendered WebGL 2, rotated, walked to T, switched to C0, traversed F/G, replayed and verified the reset state. It also checked the downloadable file's frozen SHA256. No game page errors or failed game requests occurred.
+- Screenshots and JSON results are published on [`deployment-evidence/latest`](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/tree/deployment-evidence/latest); their JSON records the actual URL, browser and source commit. The workflow installs CJK test-machine fonts for readable Chinese screenshots; no font assets were added to the game.
+- The optional browser-generated `/favicon.ico` request is 404; it is recorded separately and does not prevent gameplay. Existing first-hit occlusion, portrait whitespace, unsigned visual tolerance and unmeasured physical-device performance remain known limitations.
+
+The cloud task's egress restriction was kept intact. Hosted tests ran as normal repository CI on GitHub's runner; results were retrieved over the already-working Git transport. A separate ROOM development environment is **not required** to use this test site. The portfolio environment's repository binding, startup script and custom network list remain as before.
+
 ## Files and publishing source
 
 - `main` contains the authoritative source, acceptance history and deployment tooling.
@@ -30,7 +43,7 @@ Expected URL after successful Pages activation/build:
 
 `https://tony-zhang-notfound.github.io/Room-Monument-Valley/`
 
-That is a deployment target, not a claim of verified availability. Check its actual HTTP response, deployment metadata and real browser before reporting success.
+This target has now passed hosted browser validation as recorded above. For future releases, check the actual HTTP response, deployment metadata and real browser again; a pushed branch alone is not evidence of success.
 
 ## Hosted validation
 

@@ -6,7 +6,9 @@
 
 代码仓库：[Tony-Zhang-NotFound/Room-Monument-Valley](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley)。代码、历史及验收成果已同步；代码同步和测试部署均不代表正式发布或 G2.5 自动通过。
 
-交互测试部署已另行获准，统一使用 GitHub Pages；G2.5 HOLD 继续保留。部署生成、启用步骤、真实访问检查和网络阻断记录见 [部署说明](docs/DEPLOYMENT.md)。网站仅在实际线上验证后才标为可用。
+**[打开可交互测试试玩网站](https://tony-zhang-notfound.github.io/Room-Monument-Valley/)** · [下载单文件试玩版](https://tony-zhang-notfound.github.io/Room-Monument-Valley/ROOM_G2_Play.html)
+
+GitHub Pages 已部署成功，真实线上浏览器已验证场景、旋转、移动、视角、通关与重置。**G2.5 HOLD 继续保留**，此地址为测试试玩。部署与检查方法见 [部署说明](docs/DEPLOYMENT.md)，[线上截图及结果](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/tree/deployment-evidence/latest)由独立证据分支保存。
 
 ## G2.5 浏览器九宫格
 
@@ -75,7 +77,7 @@ node scripts/export.mjs
 
 独立 ROOM 项目的远程目标为 `Tony-Zhang-NotFound/Room-Monument-Valley`。用户已授权以非强制推送同步 `main`、`g2.5-acceptance` 和 `g2-baseline`，保留历史。没有使用或修改作品集仓库。
 
-尚未完成：作者视觉容差与连接体验签核、目标设备性能验收、未看解法的真人试玩、远程 CI 与托管部署验证；完整 Booklet 也仍待补齐。代码同步和测试部署均不改变 HOLD G3 结论。当前测试部署已获授权，正式发布仍未执行。
+尚未完成：作者视觉容差与连接体验签核、目标设备性能验收、未看解法的真人试玩；完整 Booklet 也仍待补齐。托管部署及线上浏览器 CI 已通过；19 项纯逻辑/几何检查的证据仍为本地及干净克隆运行，未声称已在远程 CI 重跑。测试部署不改变 HOLD G3 结论，正式发布仍未执行。
 
 ## 来源
 
