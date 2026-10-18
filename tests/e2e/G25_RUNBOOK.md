@@ -1,4 +1,50 @@
-# Browser acceptance runbook — NOT EXECUTED
+# Browser acceptance runbook — executable local G2.5 checks
+
+2026-10-18: real Chromium / WebGL execution is recorded in `evidence/g2_5/current/`; see `G2_5_ACCEPTANCE.md`. The detailed instructions below are the acceptance contract, not a claim that remote hosting or physical hardware QA ran.
+
+## Repeat the automated local run
+
+Use the existing isolated checkout; do not create a worktree unless explicitly requested. Check Git root, remotes and user changes. Preserve `baseline/`, `g2-baseline` and the uploaded bundle. Current tools: Node 24, Python 3, system Chromium, system ffmpeg and cloud-provided Playwright 1.62.1. No application dependency install is needed.
+
+From `/workspace/room-g2`:
+
+```sh
+node --test --test-reporter=tap tests/*.test.mjs
+ROOM_PROJECTION_OUTPUT=/tmp/room-projection.json node tests/g25-projection.mjs
+node scripts/bundle.mjs
+sha256sum ROOM_G2_Play.html baseline/ROOM_G2_Play.html
+```
+
+In a persistent terminal, serve the parent to exercise a non-root subpath:
+
+```sh
+python3 -m http.server 8765 --bind 127.0.0.1 --directory /workspace
+```
+
+Do not terminate unrelated listeners. Verify any existing listener serves this checkout, or use a free port and set `ROOM_TEST_BASE_URL`. These URLs are internal checks, not published previews.
+
+Playwright video needs ffmpeg. This instance reuses the installed system binary via Playwright's supported browser-cache override. For the installed version, prepare once, preserving existing files:
+
+```sh
+mkdir -p /workspace/.cache/ms-playwright/ffmpeg-1011
+test -e /workspace/.cache/ms-playwright/ffmpeg-1011/ffmpeg-linux || ln -s /usr/bin/ffmpeg /workspace/.cache/ms-playwright/ffmpeg-1011/ffmpeg-linux
+```
+
+Run sequentially to avoid CPU contention. Use a new evidence directory each run; do not overwrite prior evidence. Diagnostics needs an existing output directory. The runners use real WebGL with SwiftShader, not a renderer mock.
+
+```sh
+ROOM_EVIDENCE_DIR=/tmp/room-browser-rerun PLAYWRIGHT_BROWSERS_PATH=/workspace/.cache/ms-playwright node tests/e2e/browser-acceptance.cjs
+ROOM_EVIDENCE_DIR=/tmp/room-browser-rerun node tests/e2e/browser-diagnostics.cjs
+ROOM_EVIDENCE_DIR=/tmp/room-browser-rerun node tests/e2e/occluded-rotor.cjs
+```
+
+Overrides: `ROOM_TEST_BASE_URL` (trailing slash), `ROOM_CHROMIUM` (executable), `ROOM_EVIDENCE_DIR` (output). Do not substitute old screenshots for failed runs. `browser-results.json` groups T01–T19 and local T21; diagnostics records 30s idle, 30s interacting, C0 marker occlusion and touch emulation. The overview is a derived thumbnail sheet. Endpoint numbers are runtime debug projections, not image-recognition measurements. Engineering tolerance ≤1 CSS px is provisional pending author approval.
+
+The first run failed on a browser-generated `/favicon.ico` 404. Only that exact optional request is now recorded as incidental; game request failures and JavaScript errors still fail. WebGL-disabled errors are expected only in T19's separate browser.
+
+T20 hardware performance, human playtesting, authored visual tolerance, GitHub CI and deployment need separate evidence/decisions. Scripts do not grant permission for remote creation, push, merge or deployment. Candidate core modules remain unintegrated.
+
+## Detailed acceptance steps
 
 Run against the tested commit, on a supported real browser with WebGL. Record browser version, OS/device/GPU, DPR, URL and commit. Preserve browser console and network logs. Do not substitute DOM mocks or CPU renders.
 

@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-18T17:22:19.913Z",
+  "commit": "97ecc419cb4d8ad92e8a00d7393c00e8bee50f39",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "hit": {
+    "x": 694,
+    "y": 496,
+    "hits": [
+      {
+        "name": "TransitionMask",
+        "rotate": false,
+        "visible": true
+      },
+      {
+        "name": "Step_7",
+        "rotate": true,
+        "visible": true
+      },
+      {
+        "name": "Base",
+        "rotate": false,
+        "visible": true
+      }
+    ]
+  },
+  "before": {
+    "state": {
+      "node": "S",
+      "turn": 0,
+      "camera": 0,
+      "won": false
+    },
+    "busy": false,
+    "paused": false,
+    "player": [
+      -3.5,
+      0,
+      1.4
+    ],
+    "undoCount": 3
+  },
+  "after": {
+    "state": {
+      "node": "S",
+      "turn": 0,
+      "camera": 0,
+      "won": false
+    },
+    "busy": false,
+    "paused": false,
+    "player": [
+      -3.5,
+      0,
+      1.4
+    ],
+    "undoCount": 3
+  },
+  "fallbackLabel": "旋转楼梯 90°\nR",
+  "fallback": {
+    "state": {
+      "node": "S",
+      "turn": 1,
+      "camera": 0,
+      "won": false
+    },
+    "busy": false,
+    "paused": false,
+    "player": [
+      -3.5,
+      0,
+      1.4
+    ],
+    "undoCount": 4
+  },
+  "status": "PASS with documented P1 first-hit limitation; explicit rotate button works"
+}

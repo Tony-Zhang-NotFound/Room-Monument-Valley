@@ -1,0 +1,625 @@
+{
+  "metadata": {
+    "date": "2026-10-18T17:15:17.115Z",
+    "commit": "29b264768a9de73650c9d746066e7ba038a64601",
+    "dirty": "?? evidence/g2_5/current/\n?? evidence/g2_5/runs/",
+    "browser": "154.0.8037.57",
+    "os": {
+      "platform": "linux",
+      "release": "6.18.55",
+      "arch": "x64",
+      "cpu": "AMD EPYC 9V74 80-Core Processor",
+      "logicalCPUs": 5
+    },
+    "base": "http://127.0.0.1:8765/room-g2/",
+    "rendering": "Real Chromium WebGL 2 using SwiftShader software rendering; not target hardware performance",
+    "engineeringToleranceCssPx": 1,
+    "authoredTolerance": "Not yet approved by owner",
+    "browserInfo": {
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "dpr": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)"
+    }
+  },
+  "results": [
+    {
+      "ids": "T01/T02/T03/T04/T05/T06",
+      "name": "initial state, rotations, move guards and commit",
+      "status": "PASS",
+      "elapsedMs": 10871
+    },
+    {
+      "ids": "T07/T08/T09/T15/T16",
+      "name": "animated journey, pending input, pause, wrong views, win and replay",
+      "status": "PASS",
+      "elapsedMs": 30365
+    },
+    {
+      "ids": "T10/T11",
+      "name": "reset interrupts rotation/walk; undo restores stable pose",
+      "status": "PASS",
+      "elapsedMs": 12195
+    },
+    {
+      "ids": "T12",
+      "name": "reload pending walk/rotation restores committed state; undo clears",
+      "status": "PASS",
+      "elapsedMs": 4905,
+      "detail": {
+        "checkpoint": {
+          "schema": 1,
+          "level": "atrium-g2-02",
+          "state": {
+            "node": "S",
+            "turn": 0,
+            "camera": 1,
+            "won": false
+          }
+        }
+      }
+    },
+    {
+      "ids": "T13",
+      "name": "corrupt/wrong-version saves and storage denial",
+      "status": "PASS",
+      "elapsedMs": 8177
+    },
+    {
+      "ids": "T14",
+      "name": "nine real browser views with actual canvas and endpoint debug",
+      "status": "PASS",
+      "elapsedMs": 22838,
+      "detail": {
+        "tolerance": "Engineering <=1 CSS px only; authored approval pending",
+        "count": 9
+      }
+    },
+    {
+      "ids": "T17",
+      "name": "real canvas pointer hits and button fallback",
+      "status": "PASS",
+      "elapsedMs": 1906,
+      "detail": {
+        "rotor": {
+          "x": 629.7335249600267,
+          "y": 610.3373239639863,
+          "firstHit": "Step_6",
+          "visible": true
+        },
+        "marker": {
+          "x": 667.3064299926012,
+          "y": 475.7080035848241,
+          "firstHit": "Target_T",
+          "visible": true
+        },
+        "pointerMoved": true,
+        "fallback": "MOVE button reaches T"
+      }
+    },
+    {
+      "ids": "T18",
+      "name": "system reduced motion reaches every stable transition",
+      "status": "PASS",
+      "elapsedMs": 4697
+    },
+    {
+      "ids": "T19",
+      "name": "real browser with WebGL disabled shows readable alert",
+      "status": "PASS",
+      "elapsedMs": 1021,
+      "detail": {
+        "expectedErrors": [
+          "Error creating WebGL context."
+        ]
+      }
+    },
+    {
+      "ids": "T21-local",
+      "name": "source and bundled HTML work on a non-root subpath",
+      "status": "PASS",
+      "elapsedMs": 4427,
+      "detail": {
+        "bundle": "Real WebGL journey and replay PASS",
+        "remoteCI": "NOT EXECUTED",
+        "hostedDeployment": "NOT EXECUTED"
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "matrix": [
+    {
+      "viewport": {
+        "width": 1600,
+        "height": 900
+      },
+      "view": 0,
+      "fullPage": "C0_1600x900.png",
+      "canvasScreenshot": "C0_1600x900_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 0,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 1260,
+        "height": 814,
+        "bufferWidth": 1260,
+        "bufferHeight": 814
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C0\n稳定状态 · 端点偏差 0.00 px\nE01 条件成立",
+      "points": {
+        "S": {
+          "x": 310.2306000634169,
+          "y": 540.2330706493126
+        },
+        "T": {
+          "x": 667.3064299926015,
+          "y": 511.3684163636215
+        },
+        "A": {
+          "x": 712.6070949836173,
+          "y": 533.6729219480192
+        },
+        "B": {
+          "x": 712.6070949836173,
+          "y": 533.6729219480192
+        },
+        "F": {
+          "x": 776.560974970934,
+          "y": 502.18420818181073
+        },
+        "G": {
+          "x": 864.4975599534943,
+          "y": 545.4811896103474
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 0
+    },
+    {
+      "viewport": {
+        "width": 1600,
+        "height": 900
+      },
+      "view": 1,
+      "fullPage": "C1_1600x900.png",
+      "canvasScreenshot": "C1_1600x900_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 1,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 1260,
+        "height": 814,
+        "bufferWidth": 1260,
+        "bufferHeight": 814
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C1\n稳定状态 · 端点偏差 167.78 px\nE01 未激活",
+      "points": {
+        "S": {
+          "x": 459.4563200338222,
+          "y": 763.5084587720565
+        },
+        "T": {
+          "x": 667.3064299926012,
+          "y": 477.4200824378118
+        },
+        "A": {
+          "x": 712.6070949836171,
+          "y": 458.5016111122977
+        },
+        "B": {
+          "x": 861.8328149540228,
+          "y": 381.8004784984488
+        },
+        "F": {
+          "x": 797.8789349667061,
+          "y": 355.09204839184065
+        },
+        "G": {
+          "x": 885.8155199492663,
+          "y": 318.3679569952544
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 167.78
+    },
+    {
+      "viewport": {
+        "width": 1600,
+        "height": 900
+      },
+      "view": 2,
+      "fullPage": "C2_1600x900.png",
+      "canvasScreenshot": "C2_1600x900_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 2,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 1260,
+        "height": 814,
+        "bufferWidth": 1260,
+        "bufferHeight": 814
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C2\n稳定状态 · 端点偏差 112.56 px\nE01 未激活",
+      "points": {
+        "S": {
+          "x": 283.2962962962963,
+          "y": 672.1478581050312
+        },
+        "T": {
+          "x": 682.7592592592592,
+          "y": 492.99999999999983
+        },
+        "A": {
+          "x": 746.8240740740741,
+          "y": 492.99999999999983
+        },
+        "B": {
+          "x": 852.3425925925926,
+          "y": 453.81140603952423
+        },
+        "F": {
+          "x": 852.3425925925926,
+          "y": 420.22118264483083
+        },
+        "G": {
+          "x": 976.7037037037038,
+          "y": 420.22118264483083
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 112.56
+    },
+    {
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "view": 0,
+      "fullPage": "C0_1200x900.png",
+      "canvasScreenshot": "C0_1200x900_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 0,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 860,
+        "height": 814,
+        "bufferWidth": 860,
+        "bufferHeight": 814
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C0\n稳定状态 · 端点偏差 0.00 px\nE01 条件成立",
+      "points": {
+        "S": {
+          "x": 149.33300069826277,
+          "y": 534.4572632952954
+        },
+        "T": {
+          "x": 462.7444832518693,
+          "y": 509.1222690592815
+        },
+        "A": {
+          "x": 502.5056414862821,
+          "y": 528.6993100598377
+        },
+        "B": {
+          "x": 502.5056414862821,
+          "y": 528.6993100598377
+        },
+        "F": {
+          "x": 558.6390413466296,
+          "y": 501.0611345296407
+        },
+        "G": {
+          "x": 635.8224661546074,
+          "y": 539.0636258836614
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 0
+    },
+    {
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "view": 1,
+      "fullPage": "C1_1200x900.png",
+      "canvasScreenshot": "C1_1200x900_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 1,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 860,
+        "height": 814,
+        "bufferWidth": 860,
+        "bufferHeight": 814
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C1\n稳定状态 · 端点偏差 147.27 px\nE01 未激活",
+      "points": {
+        "S": {
+          "x": 280.31093370573996,
+          "y": 730.4298398294143
+        },
+        "T": {
+          "x": 462.7444832518692,
+          "y": 479.32524340222983
+        },
+        "A": {
+          "x": 502.505641486282,
+          "y": 462.72018181922334
+        },
+        "B": {
+          "x": 633.4835744937594,
+          "y": 395.3983031840476
+        },
+        "F": {
+          "x": 577.350174633412,
+          "y": 371.9558633021561
+        },
+        "G": {
+          "x": 654.5335994413897,
+          "y": 339.72250846455523
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 147.27
+    },
+    {
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "view": 2,
+      "fullPage": "C2_1200x900.png",
+      "canvasScreenshot": "C2_1200x900_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 2,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 860,
+        "height": 814,
+        "bufferWidth": 860,
+        "bufferHeight": 814
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C2\n稳定状态 · 端点偏差 98.80 px\nE01 未激活",
+      "points": {
+        "S": {
+          "x": 125.69230769230768,
+          "y": 650.2410986656142
+        },
+        "T": {
+          "x": 476.3076923076923,
+          "y": 492.9999999999999
+        },
+        "A": {
+          "x": 532.5384615384615,
+          "y": 492.9999999999999
+        },
+        "B": {
+          "x": 625.1538461538461,
+          "y": 458.60350966689674
+        },
+        "F": {
+          "x": 625.1538461538461,
+          "y": 429.12080366709404
+        },
+        "G": {
+          "x": 734.3076923076924,
+          "y": 429.12080366709404
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 98.8
+    },
+    {
+      "viewport": {
+        "width": 900,
+        "height": 1600
+      },
+      "view": 0,
+      "fullPage": "C0_900x1600.png",
+      "canvasScreenshot": "C0_900x1600_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 0,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 560,
+        "height": 1514,
+        "bufferWidth": 560,
+        "bufferHeight": 1514
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C0\n稳定状态 · 端点偏差 0.00 px\nE01 条件成立",
+      "points": {
+        "S": {
+          "x": 97.24009347793854,
+          "y": 869.9954272620529
+        },
+        "T": {
+          "x": 301.3219890942405,
+          "y": 853.4982217130205
+        },
+        "A": {
+          "x": 327.2129758515325,
+          "y": 866.2460623645454
+        },
+        "B": {
+          "x": 327.2129758515325,
+          "y": 866.2460623645454
+        },
+        "F": {
+          "x": 363.76495715594484,
+          "y": 848.2491108565102
+        },
+        "G": {
+          "x": 414.0239314495118,
+          "y": 872.9949191800587
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 0
+    },
+    {
+      "viewport": {
+        "width": 900,
+        "height": 1600
+      },
+      "view": 1,
+      "fullPage": "C1_900x1600.png",
+      "canvasScreenshot": "C1_900x1600_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 1,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 560,
+        "height": 1514,
+        "bufferWidth": 560,
+        "bufferHeight": 1514
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C1\n稳定状态 · 端点偏差 95.89 px\nE01 未激活",
+      "points": {
+        "S": {
+          "x": 182.52804985490044,
+          "y": 997.6054770982233
+        },
+        "T": {
+          "x": 301.32198909424045,
+          "y": 834.0955073316845
+        },
+        "A": {
+          "x": 327.21297585153246,
+          "y": 823.2829090915873
+        },
+        "B": {
+          "x": 412.50093222849455,
+          "y": 779.4454067244961
+        },
+        "F": {
+          "x": 375.9489509240822,
+          "y": 764.1805621502413
+        },
+        "G": {
+          "x": 426.2079252176491,
+          "y": 743.1914008606407
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 95.89
+    },
+    {
+      "viewport": {
+        "width": 900,
+        "height": 1600
+      },
+      "view": 2,
+      "fullPage": "C2_900x1600.png",
+      "canvasScreenshot": "C2_900x1600_canvas.png",
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 2,
+        "won": false
+      },
+      "canvas": {
+        "x": 0,
+        "y": 86,
+        "width": 560,
+        "height": 1514,
+        "bufferWidth": 560,
+        "bufferHeight": 1514
+      },
+      "dpr": 1,
+      "debug": "节点 T · 梯态 0 · 视角 C2\n稳定状态 · 端点偏差 64.33 px\nE01 未激活",
+      "points": {
+        "S": {
+          "x": 81.84615384615384,
+          "y": 945.3895526194698
+        },
+        "T": {
+          "x": 310.1538461538462,
+          "y": 842.9999999999999
+        },
+        "A": {
+          "x": 346.7692307692308,
+          "y": 842.9999999999999
+        },
+        "B": {
+          "x": 407.07692307692304,
+          "y": 820.602285364491
+        },
+        "F": {
+          "x": 407.07692307692304,
+          "y": 801.4042442483403
+        },
+        "G": {
+          "x": 478.1538461538462,
+          "y": 801.4042442483403
+        }
+      },
+      "horizontalOverflow": false,
+      "renderedDebugDeltaCssPx": 64.33
+    }
+  ],
+  "incidental": [
+    {
+      "url": "http://127.0.0.1:8765/room-g2/index.html",
+      "console": "Failed to load resource: the server responded with a status of 404 (File not found)",
+      "location": {
+        "url": "http://127.0.0.1:8765/favicon.ico",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "passed": 10,
+  "failed": 0
+}

@@ -1,0 +1,16 @@
+{
+  "file": "video/page@07fb33b96f44d4756a8ad2d8659ce3c5.webm",
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_name": "vp8",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "format": {
+    "duration": "103.920000",
+    "size": "4471018"
+  }
+}

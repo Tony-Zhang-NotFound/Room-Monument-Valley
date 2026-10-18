@@ -1,4 +1,4 @@
-> G2.5 acceptance: see [G2_5_ACCEPTANCE.md](G2_5_ACCEPTANCE.md). Current decision: NO-GO; browser tests blocked, not passed.
+> 最新验收见 [G2_5_ACCEPTANCE.md](G2_5_ACCEPTANCE.md)：本地工程检查及真实 WebGL 浏览器验收通过，九宫格和视频已保存；作者视觉签核和目标设备验收仍待完成，维持 HOLD G3。
 
 # ROOM / 悬梯之间 · G2 v0.2
 
@@ -58,10 +58,10 @@ node scripts/export.mjs
 
 ## 验收边界
 
-15 项自动检查通过，含 21 个稳定状态的可达性、往返路径、输入锁定、撤销、重置中断、保存验证、端点/桥边投影、遮挡屏射线检查和旋转包络检查。
-控制界面测试采用 DOM/WebGL 替身，验证控制逻辑，不能替代真实浏览器。
-本环境没有可用的受支持浏览器控制工具，尚未实机检查 WebGL 画面、鼠标拾取、阴影连续性、不同设备的帧率与真人可理解性。
-因此本轮状态为 **G2 候选实现，等待浏览器与试玩验收**；尚未通过 G3 完整关卡门槛。
+19 项自动检查通过，包含基线行为比较、21 个稳定状态、路径、输入锁定、撤销、重置、保存及几何检查。DOM/WebGL 替身测试仍保留；本轮另以真实 Chromium / WebGL 2 执行完整交互和九宫格验收，源码版及单文件版均能完成旅程。
+证据在 `evidence/g2_5/current/`，包括截图、视频、环境信息及逐项结果。浏览器使用 SwiftShader 软件渲染，不能代表真实设备性能；真人试玩及作者视觉签核未完成。当前为 **本地工程检查通过，HOLD G3**。`validation-report.json`、根层旧证据和冻结合同是交接时的历史结果，最新状态以验收报告为准。
+
+独立 Git 分支为 `g2.5-acceptance`，本地来源 remote 指向交付 bundle。目标为私有 `ROOM-Game`；创建远程、推送、合并和 Vercel Preview 均须另行批准。没有使用或修改作品集仓库。
 
 ## 来源
 

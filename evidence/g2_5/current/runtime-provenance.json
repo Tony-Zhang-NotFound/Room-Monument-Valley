@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-18",
+  "branch": "g2.5-acceptance",
+  "independentGitRoot": "/workspace/room-g2",
+  "deliveryHead": "36efabf9df11dd999b0643023f3d35dcaa40f0cd",
+  "testCodeHead": "97ecc419cb4d8ad92e8a00d7393c00e8bee50f39",
+  "cleanCloneHead": "06d4d464895ee945e11fde9881023f3134d3a904",
+  "runtimeDiffFromDelivery": "",
+  "sha256": {
+    "ROOM_G2_Play.html": "8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab",
+    "index.html": "18552626e6f97051d119bf42685c63f4d376711fa0cb40d6bdc46b225fa996b9",
+    "src/assets-source.js": "93e3800f9af03d35e472ef8d456c6969330d19b0facb0a8818bca387230fa93d",
+    "src/game.mjs": "5b0f97be26c1940d0972675716a37a203c0f79fc97c6565f306a1b444c8db143",
+    "src/game/game.mjs": "26974c3fb7ee03db75d4babe085cdd7a6c809ae8d5e13476254b17cff5a8f388",
+    "src/game/level.mjs": "27f593b559ec4f010976d9e79117f8be6c86929d549e02cc7837efa4d030aefd",
+    "src/level.mjs": "88301dd5afdefb66aebdf9267cbb7b71c2232012451993ee3f84c1f60eb315ff",
+    "src/main.mjs": "3cbef3113725e9798e51c0c65f952a0d333c7180274cff654af906eb989e5d84",
+    "src/render-geometry.json": "f788b6a6e2154e1595d120def8f9d3ba23628a2b6d975c0e0bb019b18b43eb5d",
+    "src/scene.mjs": "e9bf32f19302cbd3411087d0371f5e5f753f5dad6b6d00131512143b3085023e",
+    "src/style.css": "116e977e233cf52eae06c8905d74f3f8379bce284b280c1b0686b45b82eb87ef",
+    "vendor/three.module.js": "ce1fa418de16a19495a9f72495580e3015d7745c296d3ce0485897f902ddedfb"
+  }
+}

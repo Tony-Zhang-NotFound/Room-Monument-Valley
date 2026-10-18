@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-18T17:18:32.510Z",
+  "commit": "06d4d464895ee945e11fde9881023f3134d3a904",
+  "browser": "154.0.8037.57",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "renderer": "SwiftShader software WebGL 2",
+  "method": "requestAnimationFrame intervals; no GPU timer instrumentation",
+  "scope": "diagnostic only; target hardware and Booklet budget unavailable",
+  "idle": {
+    "elapsedMs": 30112.10000000894,
+    "frames": 256,
+    "meanMs": 117.5718750000466,
+    "p50Ms": 116.60000000000036,
+    "p95Ms": 233.29999999999927,
+    "maxMs": 366.6999999999971,
+    "averageFps": 8.501537582772919,
+    "actions": 0,
+    "lastState": {
+      "state": {
+        "node": "S",
+        "turn": 3,
+        "camera": 1,
+        "won": false
+      },
+      "busy": false,
+      "paused": false,
+      "player": [
+        -3.5,
+        0,
+        1.4
+      ],
+      "undoCount": 0
+    }
+  },
+  "interacting": {
+    "elapsedMs": 30112.79999999702,
+    "frames": 246,
+    "meanMs": 122.4056910569469,
+    "p50Ms": 116.69999999999709,
+    "p95Ms": 233.29999999999563,
+    "maxMs": 283.3000000000029,
+    "averageFps": 8.169256365210634,
+    "actions": 12,
+    "lastState": {
+      "state": {
+        "node": "T",
+        "turn": 0,
+        "camera": 0,
+        "won": false
+      },
+      "busy": true,
+      "paused": false,
+      "player": [
+        3.3171901204204177,
+        2.5337520963363342,
+        0.6671901204204176
+      ],
+      "undoCount": 4
+    }
+  }
+}

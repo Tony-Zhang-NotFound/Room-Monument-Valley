@@ -1,0 +1,30 @@
+{
+  "commit": "06d4d464895ee945e11fde9881023f3134d3a904",
+  "scope": "C0, turn0; marker center clicks T/F/G; actual WebGL scene input with labeled button fallback",
+  "picks": [
+    {
+      "node": "T",
+      "x": 667.3064299926015,
+      "y": 509.72837918829816,
+      "firstHit": "Target_T",
+      "target": "T",
+      "actualAfterClick": "T"
+    },
+    {
+      "node": "F",
+      "x": 776.560974970934,
+      "y": 500.5441710064874,
+      "firstHit": "Target_F",
+      "target": "F",
+      "actualAfterClick": "F"
+    },
+    {
+      "node": "G",
+      "x": 864.4975599534943,
+      "y": 543.841152435024,
+      "firstHit": "Target_G",
+      "target": "G",
+      "actualAfterClick": "G"
+    }
+  ]
+}

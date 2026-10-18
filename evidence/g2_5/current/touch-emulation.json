@@ -1,0 +1,36 @@
+{
+  "device": "Chromium emulation, 390x844 CSS px, DPR2, touch; not physical-device QA",
+  "state": {
+    "state": {
+      "node": "G",
+      "turn": 0,
+      "camera": 0,
+      "won": true
+    },
+    "busy": false,
+    "paused": false,
+    "player": [
+      5.7,
+      3.12,
+      0.2
+    ],
+    "undoCount": 6
+  },
+  "layout": {
+    "width": 390,
+    "scrollWidth": 390,
+    "canvas": {
+      "x": 0,
+      "y": -281,
+      "width": 390,
+      "height": 489.515625,
+      "top": -281,
+      "right": 390,
+      "bottom": 208.515625,
+      "left": 0
+    }
+  },
+  "errors": [],
+  "journey": "PASS",
+  "replay": "PASS"
+}

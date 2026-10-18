@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: single-file deliverable embeds code and CSS without runtime file dependencies
+ok 1 - single-file deliverable embeds code and CSS without runtime file dependencies
+  ---
+  duration_ms: 76.481072
+  type: 'test'
+  ...
+# Subtest: controller runs forward, pauses mid-animation, wins, undoes, resets and saves
+ok 2 - controller runs forward, pauses mid-animation, wins, undoes, resets and saves
+  ---
+  duration_ms: 17.853981
+  type: 'test'
+  ...
+# Subtest: reduced motion commits instantly; reset safely cancels live animation
+ok 3 - reduced motion commits instantly; reset safely cancels live animation
+  ---
+  duration_ms: 0.467343
+  type: 'test'
+  ...
+# Subtest: 21 reachable stable states; all can reach the door and return to safety
+ok 4 - 21 reachable stable states; all can reach the door and return to safety
+  ---
+  duration_ms: 14.405292
+  type: 'test'
+  ...
+# Subtest: full forward route requires both rotated staircase and aligned camera
+ok 5 - full forward route requires both rotated staircase and aligned camera
+  ---
+  duration_ms: 6.285106
+  type: 'test'
+  ...
+# Subtest: busy locks commands and saves only the last stable checkpoint
+ok 6 - busy locks commands and saves only the last stable checkpoint
+  ---
+  duration_ms: 0.315475
+  type: 'test'
+  ...
+# Subtest: reset invalidates a pending completion token
+ok 7 - reset invalidates a pending completion token
+  ---
+  duration_ms: 0.89732
+  type: 'test'
+  ...
+# Subtest: undo reverses a stable move and restores camera and module state
+ok 8 - undo reverses a stable move and restores camera and module state
+  ---
+  duration_ms: 0.280602
+  type: 'test'
+  ...
+# Subtest: save schema refuses corrupt, old, fractional, and impossible states
+ok 9 - save schema refuses corrupt, old, fractional, and impossible states
+  ---
+  duration_ms: 0.348785
+  type: 'test'
+  ...
+# Subtest: cancel returns to stable state without history pollution
+ok 10 - cancel returns to stable state without history pollution
+  ---
+  duration_ms: 7.829199
+  type: 'test'
+  ...
+# Subtest: endpoint and bridge edge projection align across three viewport ratios
+ok 11 - endpoint and bridge edge projection align across three viewport ratios
+  ---
+  duration_ms: 2.239619
+  type: 'test'
+  ...
+# Subtest: the character silhouette stays hidden behind the mask throughout the depth transfer
+ok 12 - the character silhouette stays hidden behind the mask throughout the depth transfer
+  ---
+  duration_ms: 81.09888
+  type: 'test'
+  ...
+# Subtest: the full rotating module stays clear of fixed architecture through its sweep
+ok 13 - the full rotating module stays clear of fixed architecture through its sweep
+  ---
+  duration_ms: 26.467559
+  type: 'test'
+  ...
+# Subtest: normal staircase path maintains foot contact or step clearance
+ok 14 - normal staircase path maintains foot contact or step clearance
+  ---
+  duration_ms: 14.513215
+  type: 'test'
+  ...
+# Subtest: animation paths start and finish at stable anchors, including reverse paths
+ok 15 - animation paths start and finish at stable anchors, including reverse paths
+  ---
+  duration_ms: 1.059494
+  type: 'test'
+  ...
+# Subtest: baseline oracle: exhaustive stable states and commands preserve transitions and saves
+ok 16 - baseline oracle: exhaustive stable states and commands preserve transitions and saves
+  ---
+  duration_ms: 21.858486
+  type: 'test'
+  ...
+# Subtest: T01-T13/T15: explicit expectations on extracted core, pending and recovery
+ok 17 - T01-T13/T15: explicit expectations on extracted core, pending and recovery
+  ---
+  duration_ms: 7.652473
+  type: 'test'
+  ...
+# Subtest: deterministic lifecycle parity: 10000 mixed commands, stale commits, cancel, reset, undo
+ok 18 - deterministic lifecycle parity: 10000 mixed commands, stale commits, cancel, reset, undo
+  ---
+  duration_ms: 307.90177
+  type: 'test'
+  ...
+# Subtest: level constants and bidirectional routes are unchanged
+ok 19 - level constants and bidirectional routes are unchanged
+  ---
+  duration_ms: 2.175823
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 726.895939

@@ -1,98 +1,96 @@
-# G2.5 acceptance — NO-GO / HOLD G3
+# ROOM G2.5 — 本地工程验收完成，建议 HOLD / NO-GO 进入 G3
 
-Run date: 2026-10-18 UTC. Scope: existing ROOM G2 only. No levels, mechanics, backend services or assets added. This is a partial acceptance execution with an explicit browser blocker, not a release approval.
+日期：2026-10-18。本次补齐真实 Chromium / WebGL 验收。工程检查通过不等于作者视觉签核、目标设备性能验收或发布授权。
 
-## Provenance and freeze
+## 范围与版本
 
-- Read the complete `baseline/G2_5_Engineering_Audit.md` and the current playable's gameplay, scene, UI and interaction sections.
-- Authoritative playable matched the existing local project byte-for-byte before any changes.
-- Baseline commit: `08150508bfc2589e9dc292abb3eaaba6a9f82f90`, tag `g2-baseline`.
-- Tested extraction commit: `b9ce0f80d9d219b4a4b2a0542bed0b7b59deabd1`, branch `audit/g2-5`.
-- HTML SHA256: `8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab` (1,345,122 bytes).
-- `baseline/SHA256SUMS` also records the audit hash. Baseline snapshot remains untouched. The final evidence-only commit is recorded in the delivery receipt and included Git bundle.
+- 独立 Git 根：`/workspace/room-g2`；分支：`g2.5-acceptance`。作品集仓库未修改。
+- 交付 HEAD：`36efabf9df11dd999b0643023f3d35dcaa40f0cd`；冻结基线 / `g2-baseline`：`08150508bfc2589e9dc292abb3eaaba6a9f82f90`。
+- 浏览器验收代码及运行版本：`29b2647`；补充诊断代码及干净克隆版本：`06d4d46`；遮挡后备专项：`97ecc41`。之后的提交归档文档与证据。
+- 当前 HTML 和冻结 HTML 的 SHA256 均保持 `8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab`，1,345,122 字节。
+- 上传 ZIP SHA256：`733db5a82bea7dc63ba304349ab26169df01b282cc0ba1e7b174f15cf0757758`。原始附件和 Git bundle 均保留。
+- `origin` 仍指向本地交付 bundle，不是 GitHub。用户指定未来私有仓库名 `ROOM-Game`；创建、推送、合并和 Vercel Preview 均未执行，属于另行批准的阶段。
 
-## Extraction and parity
+没有改变游戏运行代码、场景、UI、玩法、资产、引擎或存档格式。`src/game/` 仍为未接入运行时的候选提取；GLB 仍为参考导出，运行时使用程序化几何。旧验收报告可从交付 HEAD 恢复，冻结审查合同保持原样。
 
-The supplied project already had pure `src/game.mjs` and `src/level.mjs`. To establish provenance independently, extracted the frozen HTML's `__game` and `__level` bodies into `src/game/game.mjs` and `src/game/level.mjs`. Only the module boundary changed: the level namespace dependency became an ES import and the wrapper return became named exports.
+## 已执行证据
 
-These candidate modules are tested independently; runtime integration is deliberately deferred. The playable, existing runtime modules, UI, scene, geometry, engine, save schema and interaction timing are unchanged. This is not a completed Vite/TypeScript migration. No rendering refactor was attempted before browser parity could be established.
+最新证据目录：[evidence/g2_5/current](evidence/g2_5/current/)。历史证据保留；本次首轮失败结果另存于 `evidence/g2_5/runs/baseline-first/`。
 
-| Frozen section | Extracted candidate | Responsibility |
+| 检查 | 观察结果 | 证据（current/ 下） |
 |---|---|---|
-| `__level` | `src/game/level.mjs` | Constants, paths, path sampling |
-| `__game` | `src/game/game.mjs` | Initial/valid state, transitions, saves, pending commits, reset, undo |
-| `__assets`, `__scene`, `__main` | Existing files unchanged | Procedural assets, rendering, UI and animation |
+| Node 逻辑、几何、模拟控制器和基线一致性 | 19 通过，0 失败，0 跳过；2,112 次转换比较，10,000 次生命周期操作 | `unit.tap` |
+| 干净本地克隆 | 19 通过；重建 HTML 与冻结基线逐字节一致 | `clean-checkout.tap`、`clean-build.log`、`html-sha256.txt` |
+| 真实浏览器验收 | 10 组通过，0 组失败；不是 DOM/WebGL 替身 | `browser-results.json`、`browser-run.log` |
+| 九宫格 | 9 张完整页面 + 9 张画布截图 | `C*_*.png`、`nine-view-overview.png` |
+| 完整动画旅程与中断 | 实际通关、暂停、重置、胜利、重玩；视频约 104 秒 | `video/*.webm`、`video-metadata.json` |
+| 禁用 WebGL | 显示可读的启动错误和预期上下文异常 | `webgl-unavailable.png`、T19 记录 |
+| 补充诊断 | 帧时间、遮挡点击和触控模拟单独记录 | `performance.json`、`pointer-occlusion.json`、`touch-emulation.json` |
+| 遮挡专项 | TransitionMask 遮住 Step_7；点击不旋转，明确的旋转按钮可用 | `occluded-stair.json`、`occluded-stair.png` |
 
-Node v24.19.0, Linux 6.18.55. **19 tests passed, 0 failed** in the working checkout and again in a clean local clone of the tested commit. Evidence: `evidence/g2_5/unit.tap`, `clean-checkout.tap`, `clean-build.log`.
+Chromium **154.0.8037.57**，Linux **6.18.55 x64**，AMD EPYC 9V74，分配 5 个逻辑 CPU；九宫格 DPR=1。WebGL 2 经 ANGLE / SwiftShader 软件渲染。版本、GPU 字符串、实际画布尺寸、时间与运行提交见 `browser-environment.json`。本地 HTTP 非根子路径 `/room-g2/` 已测；无已验证的外部托管地址。
 
-- 96 state candidates (21 valid stable states), 11 commands, two implementations versus the embedded baseline: 2,112 transition comparisons.
-- 10,000 deterministic mixed lifecycle operations compare baseline, existing source and extraction, including stale commits, cancellation, reset and undo.
-- Explicit expected-state tests cover fresh state, four rotations, movement guards, deferred commit, busy rejection, reverse travel, save validation and recovery.
-- Level constants and forward/reverse path samples match the baseline.
-- Existing geometry tests and simulated DOM/controller tests also pass. The latter use a mocked WebGL renderer and are **not browser tests**.
-- `node scripts/bundle.mjs` in the clean clone reproduced the frozen standalone HTML byte-for-byte. No dependency download is needed for this existing vendored build. This does not prove a lockfile-based Vite install or hosted deployment.
+正常游戏无 JavaScript 异常或游戏资源请求失败。浏览器自行请求 `/favicon.ico` 返回 404，单独记录为 `incidental`，没有冒充资源加载成功。首轮脚本未区分该可选请求，最终退出码为 1；保留首轮日志，修正分类后完整重跑退出码为 0。录制器最初缺少 Playwright 专用 ffmpeg，后复用系统 `/usr/bin/ffmpeg`，未下载或更改游戏依赖。
 
-## Acceptance matrix
+30 秒静止：平均 **8.50 FPS**，帧间隔均值 **117.57 ms**、P95 **233.30 ms**。30 秒交互：平均 **8.17 FPS**，均值 **122.41 ms**、P95 **233.30 ms**，发起 12 个动作。这是软件渲染测量，不能据此宣称桌面性能通过。390×844 / DPR2 触控模拟可通关并重玩，无横向溢出；未测试物理触摸设备。
 
-PASS below applies only to the named executed layer; PARTIAL is not a release pass.
+## T01–T21 逐项结果
 
-| Test | Observed result | Evidence / remaining work |
+PASS 仅限列明的执行层。PARTIAL / 待签核不是完整门槛通过。
+
+| ID | 结果 | 本次实测 / 边界 |
 |---|---|---|
-| T01 fresh save | UNIT PASS | Extracted initial-state assertion |
-| T02 four rotations | UNIT PASS | Exact 3→0→1→2→3 assertion |
-| T03 rotate away from S | UNIT PASS | Rejected at T; exhaustive state comparisons |
-| T04 blocked stairs | UNIT PASS | Rejected at initial turn 3 |
-| T05 committed stairs | UNIT PASS | Stable S until token commit, then T |
-| T06 wrong camera | UNIT PASS | C1/C2 reject T→F |
-| T07 T→F→G | PARTIAL | Unit route passes; browser/video not executed |
-| T08 camera while pending | PARTIAL | Unit busy lock passes; browser not executed |
-| T09 pause/resume | NOT EXECUTED in browser | Simulated controller passes only |
-| T10 reset mid-animation | PARTIAL | Token invalidation passes; visual reset unverified |
-| T11 undo | PARTIAL | Stable state recovery passes; visual pose unverified |
-| T12 refresh while pending | NOT EXECUTED in browser | Stable checkpoint serialization tested; actual reload unverified |
-| T13 invalid save | PARTIAL | Invalid JSON/version unit tests pass; browser console unverified |
-| T14 endpoint visual matrix | BLOCKED | Nine screenshots absent; tolerance not approved |
-| T15 wrong-view passage | PARTIAL | Unit guards pass; browser/video absent |
-| T16 full journey/replay | NOT EXECUTED in browser | No browser recording |
-| T17 raycast target access | NOT EXECUTED | First-hit behavior unchanged; fallback buttons exist, accessibility unverified |
-| T18 reduced motion | NOT EXECUTED in browser | Simulated controller passes only |
-| T19 WebGL failure | NOT EXECUTED | No real browser error screenshot |
-| T20 desktop performance | NOT EXECUTED | No target hardware/browser FPS or frame-time measurements |
-| T21 build/deploy | PARTIAL | Clean local clone tests/build pass; GitHub CI and hosted URL unverified |
+| T01 | PASS | 清空存档后 S / turn3 / C1 / 未胜利 |
+| T02 | PASS | 四次旋转 0→1→2→3 |
+| T03 | PASS | T 点旋转被拒绝，状态不变 |
+| T04 | PASS | turn3 时 Space 无法上楼 |
+| T05 | PASS | 动画期间稳定状态仍为 S，结束才提交 T |
+| T06 | PASS | C1/C2 均拒绝 T→F |
+| T07 | PASS | 真实动画 T→F→G，胜利面板出现 |
+| T08 | PASS | 行走/旋转期间切相机被拒绝；切相机期间移动/旋转被拒绝 |
+| T09 | PASS | 旋转及行走暂停/继续；暂停时角色坐标不变，恢复后落点正确 |
+| T10 | PASS | 旋转中、行走中及暂停动画中重置；初态恢复，无过期提交 |
+| T11 | PASS | 移动、旋转撤销，角色回到 S 稳定坐标 |
+| T12 | PASS | 行走/旋转中刷新仅恢复最近稳定检查点，撤销历史清空 |
+| T13 | PASS | 损坏 JSON、错误版本、非法节点安全回退；禁止存储时提示且可继续操作 |
+| T14 | 工程 PASS；美术待签核 | 九宫格完整；C0 投影调试读数均 0.00 CSS px；暂用工程阈值 ≤1 CSS px，尚非作者批准容差 |
+| T15 | PASS | C1/C2 实际键盘尝试均无法跨越 |
+| T16 | PASS | 不刷新完整通关、胜利及重玩；源码版和单文件版均验证 |
+| T17 | PASS，带 P1 限制 | C1 暴露梯面及 T 标记、C0 三目标中心点击成功；C0 被遮挡梯面点击无动作，旋转按钮后备实际成功 |
+| T18 | PASS | 系统减弱运动偏好自动勾选，前向转换同步提交，完整返回路径通过 |
+| T19 | PASS | Chromium 禁用 WebGL 后可读错误提示；截图、预期异常已记录 |
+| T20 | PARTIAL / 诊断 | 30 秒静止 + 30 秒交互帧时间；软件渲染不能证明目标 GPU 达标，Booklet 性能预算未提供 |
+| T21 | 本地 PASS；远程未执行 | 干净克隆测试/构建，非根子路径源码和单文件加载/通关通过；远程 CI、部署属于未批准阶段 |
 
-## Browser evidence and nine requested views
+## 九宫格与视觉审阅
 
-Browser preflight executed; browser tests **did not execute**. Supported browser-control capability is missing (skill discovery reported `/root/.codex/skills/browser` absent). Managed preview guidance forbids installing a browser or improvising a control path when that capability is missing. The existing Playwright Chromium executable is also absent. See `evidence/g2_5/browser-preflight.json`. No server was started and no browser-launch success is claimed. Browser/version/device/GPU/DPR: unavailable, not measured.
+以下是视口和实际画布尺寸。固定侧栏及页眉会改变画布比例。误差为运行时调试栏的 **A/B 投影读数**，不是截图像素识别结果；T/F 是玩家落点，不应重合。
 
-| Viewport | C0 | C1 | C2 |
-|---|---|---|---|
-| 1600×900 — 16:9 | NOT EXECUTED; no screenshot | NOT EXECUTED; no screenshot | NOT EXECUTED; no screenshot |
-| 1200×900 — 4:3 | NOT EXECUTED; no screenshot | NOT EXECUTED; no screenshot | NOT EXECUTED; no screenshot |
-| 900×1600 — 9:16 | NOT EXECUTED; no screenshot | NOT EXECUTED; no screenshot | NOT EXECUTED; no screenshot |
+| 视口 | 实际画布（CSS px） | C0 | C1 | C2 |
+|---|---|---|---|---|
+| 1600×900 | 1260×814 | 0.00 px | 167.78 px | 112.56 px |
+| 1200×900 | 860×814 | 0.00 px | 147.27 px | 98.80 px |
+| 900×1600 | 560×1514 | 0.00 px | 95.89 px | 64.33 px |
 
-Supplemental `viewport-matrix.json` records CPU analytical A/B projection for those nine dimensions using the runtime frustum formula. C0 deltas are effectively zero; C1/C2 remain separated. These calculations assume canvas equals viewport and do not validate responsive CSS, rendered pixels, clipping, occlusion or screenshots. No browser tolerance was invented. The audit's T/F wording refers to passage; actual intended coincident bridge endpoints are A/B, while T/F are different player anchors.
+已审阅真实截图：人物、旋转梯、门和遮挡屏可见；C0 边缘投影连接、C1/C2 明显分离；页面无横向溢出。16:9 / 4:3 下有外围墙体/地面边缘裁切，但未裁掉当前路线的角色或门。900×1600 保留固定侧栏，画布纵向留白较多，记为 P1 可用性观察，不擅自改版。截图不能替代 Tony 的空间体验签核或未看解法的真人试玩。
 
-Existing `previews/` images are inherited CPU renders, **not G2.5 browser screenshot evidence**. Screenshot evidence count for this run: **0**. Reproduction steps and required filenames are in `tests/e2e/G25_RUNBOOK.md`.
+## 风险、责任人与决定
 
-## Failures, owners and decisions
-
-No executed assertion failed. The acceptance gate remains failed/incomplete due to missing execution evidence.
-
-| Risk | Status / owner | Decision |
+| 风险 | 状态 / 责任人 | 处理决定 |
 |---|---|---|
-| R01 P0 visual match | Open — author/QA | Approve tolerance and capture nine browser poses before GO |
-| R02 P0 interruption parity | Unit/simulated checks pass — QA | Browser pause/reset/reload still mandatory |
-| R03 P0 reproducibility | Local freeze/build pass — repository owner | Canonical GitHub destination, CI and hosted checks outstanding |
-| R04 P1 raycast occlusion | Open — interaction QA | Preserve behavior; test first-hit and button fallback before any separate UI PR |
-| R05 P1 undo persistence | Documented — game owner | History intentionally in memory, lost on refresh; stable checkpoint persists |
-| R06 P1 asset inventory | Source verified — engineering | Runtime builds procedural assets from `src/assets-source.js`; `models/*.glb` are exported references, not runtime loads |
-| R07 P1 visual/UX evidence | Blocked — browser QA | No waiver; no screenshots or video fabricated |
-| R08 P2 performance | Open — hardware QA | Measure actual target hardware against Booklet budget |
+| R01 P0 视觉连接 | 工程证据已补齐；Tony | 审阅九宫格并确认容差与体验，才将 T14 记为完整 PASS |
+| R02 P0 生命周期 | 浏览器 PASS；Codex | 未复现不同步缺陷，保留回归脚本 |
+| R03 P0 可复现性 | 本地 PASS；Tony | 远程阶段待批准，不将未授权操作记为通过或环境故障 |
+| R04 P1 拾取 | 已复现且后备可用；Codex、Tony | 1600×900、S/turn0/C0，点击 (694,496)：TransitionMask 在 Step_7 前，状态不变；旋转按钮立即成功。按原行为保留，后续交互改造需单独评审 |
+| R05 P1 撤销持久化 | 符合现状；Tony | 稳定检查点保存，刷新清空撤销历史，明确记录 |
+| R06 P1 资产 | 源码确认；Codex | 保留程序化资源，参考 GLB 不冒充已接入 |
+| R07 P1 体验 | 截图/视频已有；Tony | 真人试玩未完成；竖屏留白及外围裁切供审阅 |
+| R08 P2 性能 | 软件诊断；Tony、设备 QA | 补齐预算和目标设备测试，再决定是否优化 |
 
-No GitHub repository was created or pushed; no canonical remote was provided. No deployment or CI run is claimed. Vite/TypeScript, lockfile migration and runtime integration remain deferred until parity can be checked in a browser.
+## 决策与下一步
 
-## Reproduce and recommendation
+**本地自动化工程检查通过；建议维持 G2.5 HOLD / NO-GO 进入 G3 或发布。** 未复现需要修改游戏源码的缺陷，本轮新增可执行验收与可核查证据。
 
-From the repository root: `node --test tests/*.test.mjs`, `node tests/g25-projection.mjs`, `node scripts/bundle.mjs`, then compare `ROOM_G2_Play.html` with `baseline/ROOM_G2_Play.html`. The bundled Git history preserves both baseline and extraction commits for rollback or review.
+独立工作已完成。剩余为作者对九宫格及连接效果的签核、性能预算和目标设备/真人试玩决定。请据此决定本地 G2.5 GO；收到 GO 和明确授权后再开展私有 `ROOM-Game` 的 GitHub 集成。Vercel Preview 仍须单独批准，生产部署不在范围内。完整 Booklet 未随包提供，跨阶段前需补齐。
 
-**NO-GO for G3 or release.** Accept the pure-core extraction and local parity evidence for review. Resume the browser runbook in a supported browser environment, attach all screenshots/videos/logs, resolve P0 items, and validate CI/hosted deployment before changing this recommendation.
+复现步骤见 [tests/e2e/G25_RUNBOOK.md](tests/e2e/G25_RUNBOOK.md)。没有声称远程 CI、托管访问、硬件性能或下一阶段已通过。

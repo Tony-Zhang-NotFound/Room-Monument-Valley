@@ -1,0 +1,78 @@
+{
+  "kind": "CPU analytical projection; viewport assumed equal to canvas, actual CSS unverified",
+  "tolerance": "No authored browser tolerance approved; no visual PASS assigned",
+  "results": [
+    {
+      "width": 1600,
+      "height": 900,
+      "camera": "C0",
+      "bridgeEndpointDeltaPx": 2.905234582830973e-14,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 1600,
+      "height": 900,
+      "camera": "C1",
+      "bridgeEndpointDeltaPx": 185.51026392323735,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 1600,
+      "height": 900,
+      "camera": "C2",
+      "bridgeEndpointDeltaPx": 124.45282538828289,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 1200,
+      "height": 900,
+      "camera": "C0",
+      "bridgeEndpointDeltaPx": 2.5066604164831256e-14,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 1200,
+      "height": 900,
+      "camera": "C1",
+      "bridgeEndpointDeltaPx": 185.51026392323735,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 1200,
+      "height": 900,
+      "camera": "C2",
+      "bridgeEndpointDeltaPx": 124.4528253882829,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 900,
+      "height": 1600,
+      "camera": "C0",
+      "bridgeEndpointDeltaPx": 2.0816681711721685e-14,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 900,
+      "height": 1600,
+      "camera": "C1",
+      "bridgeEndpointDeltaPx": 154.11621925930484,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    },
+    {
+      "width": 900,
+      "height": 1600,
+      "camera": "C2",
+      "bridgeEndpointDeltaPx": 103.39157801488119,
+      "browserStatus": "NOT_EXECUTED",
+      "screenshot": null
+    }
+  ]
+}
