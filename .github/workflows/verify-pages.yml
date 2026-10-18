@@ -28,6 +28,10 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/room-browser" --no-save --package-lock=false --ignore-scripts playwright@1.62.1
           test -x /usr/bin/google-chrome
+      - name: Install Chinese fonts for readable browser screenshots
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes fonts-noto-cjk
       - name: Wait for the Pages artifact to become available
         run: |
           for attempt in $(seq 1 30); do
@@ -56,6 +60,7 @@ jobs:
           else
             git switch --orphan deployment-evidence
           fi
+          git rm -r --ignore-unmatch latest
           mkdir -p latest
           cp "$RUNNER_TEMP/room-online-evidence/"* latest/
           cat > README.md <<'REPORT'
