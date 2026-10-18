@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "units": "metres",
+  "upAxis": "Y",
+  "assets": [
+    {
+      "id": "01_start",
+      "file": "models/01_start.glb",
+      "bytes": 97256,
+      "triangles": 1292,
+      "state": {
+        "id": "01_start",
+        "label": "01 / 安全点与旋转梯",
+        "node": "S",
+        "turn": 3,
+        "camera": 1,
+        "won": false
+      },
+      "source": "src/scene.mjs"
+    },
+    {
+      "id": "02_aligned",
+      "file": "models/02_aligned.glb",
+      "bytes": 98924,
+      "triangles": 1304,
+      "state": {
+        "id": "02_aligned",
+        "label": "02 / 指定视角与连接",
+        "node": "T",
+        "turn": 0,
+        "camera": 0,
+        "won": false
+      },
+      "source": "src/scene.mjs"
+    },
+    {
+      "id": "04_goal",
+      "file": "models/04_goal.glb",
+      "bytes": 98928,
+      "triangles": 1304,
+      "state": {
+        "id": "04_goal",
+        "label": "04 / 抵达光下的门",
+        "node": "G",
+        "turn": 0,
+        "camera": 0,
+        "won": true
+      },
+      "source": "src/scene.mjs"
+    }
+  ]
+}
