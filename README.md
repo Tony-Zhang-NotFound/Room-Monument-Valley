@@ -4,6 +4,16 @@
 
 本轮把资产库 v0.1 的旋转梯、门框、旅人和安全标记组合为一条可以按规则完成的短路径。黑白灰建筑、暗红机关、赭黄终点；无描边和纹理贴图。
 
+代码仓库：[Tony-Zhang-NotFound/Room-Monument-Valley](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley)。本次仅同步代码、历史和验收成果，不是正式发布或 G2.5 自动通过。
+
+## G2.5 浏览器九宫格
+
+真实 Chromium / WebGL 截图：列为 C0 / C1 / C2，行依次为 1600×900、1200×900、900×1600。下图由原始画布截图缩略排列；使用 SwiftShader 软件渲染，不代表目标设备性能。
+
+![ROOM G2.5：三个观察视角与三种视口尺寸的真实浏览器九宫格](evidence/g2_5/current/nine-view-overview.png)
+
+[查看原始截图、视频与日志](evidence/g2_5/current/) · [逐项验收报告及未完成事项](G2_5_ACCEPTANCE.md)
+
 ## 直接开始
 
 下载 `ROOM_G2_Play.html`，用支持 WebGL 2 的桌面 Chrome / Edge 双击打开。此单文件已包含全部运行代码与样式，不请求 CDN、不需账号或安装依赖。浏览器可能限制本地文件存档，失败时游戏会提示，仍可继续本次会话。
@@ -61,8 +71,10 @@ node scripts/export.mjs
 19 项自动检查通过，包含基线行为比较、21 个稳定状态、路径、输入锁定、撤销、重置、保存及几何检查。DOM/WebGL 替身测试仍保留；本轮另以真实 Chromium / WebGL 2 执行完整交互和九宫格验收，源码版及单文件版均能完成旅程。
 证据在 `evidence/g2_5/current/`，包括截图、视频、环境信息及逐项结果。浏览器使用 SwiftShader 软件渲染，不能代表真实设备性能；真人试玩及作者视觉签核未完成。当前为 **本地工程检查通过，HOLD G3**。`validation-report.json`、根层旧证据和冻结合同是交接时的历史结果，最新状态以验收报告为准。
 
-独立 Git 分支为 `g2.5-acceptance`，本地来源 remote 指向交付 bundle。目标为私有 `ROOM-Game`；创建远程、推送、合并和 Vercel Preview 均须另行批准。没有使用或修改作品集仓库。
+独立 ROOM 项目的远程目标为 `Tony-Zhang-NotFound/Room-Monument-Valley`。用户已授权以非强制推送同步 `main`、`g2.5-acceptance` 和 `g2-baseline`，保留历史。没有使用或修改作品集仓库。
+
+尚未完成：作者视觉容差与连接体验签核、目标设备性能验收、未看解法的真人试玩、远程 CI 与托管部署验证；完整 Booklet 也仍待补齐。代码同步不改变 HOLD G3 结论。Vercel Preview 和正式发布均未执行，仍需单独授权。
 
 ## 来源
 
-程序几何和游戏代码为本项目本轮制作，保留资产库 v0.1 原包；未打包参考原图。Three.js 0.170.0 为 MIT，许可证在 `vendor/THREE-LICENSE.txt`。没有新建或修改外部仓库、Supabase 项目或部署。
+程序几何和游戏代码为本项目本轮制作，保留资产库 v0.1 原包；未打包参考原图。Three.js 0.170.0 为 MIT，许可证在 `vendor/THREE-LICENSE.txt`。没有接入 Supabase 或执行部署。

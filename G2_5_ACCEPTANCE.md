@@ -2,6 +2,8 @@
 
 日期：2026-10-18。本次补齐真实 Chromium / WebGL 验收。工程检查通过不等于作者视觉签核、目标设备性能验收或发布授权。
 
+后续授权更新（同日）：用户已创建 [Room-Monument-Valley](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley)，并授权非强制同步代码、历史、验收分支与基线标签。此前建议名称 `ROOM-Game` 已由此实际仓库取代。本报告中的本地验收结果不变，代码同步不自动解除 HOLD；远程 CI、预览部署和正式发布没有包含在此授权中。
+
 ## 范围与版本
 
 - 独立 Git 根：`/workspace/room-g2`；分支：`g2.5-acceptance`。作品集仓库未修改。
@@ -9,7 +11,7 @@
 - 浏览器验收代码及运行版本：`29b2647`；补充诊断代码及干净克隆版本：`06d4d46`；遮挡后备专项：`97ecc41`。之后的提交归档文档与证据。
 - 当前 HTML 和冻结 HTML 的 SHA256 均保持 `8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab`，1,345,122 字节。
 - 上传 ZIP SHA256：`733db5a82bea7dc63ba304349ab26169df01b282cc0ba1e7b174f15cf0757758`。原始附件和 Git bundle 均保留。
-- `origin` 仍指向本地交付 bundle，不是 GitHub。用户指定未来私有仓库名 `ROOM-Game`；创建、推送、合并和 Vercel Preview 均未执行，属于另行批准的阶段。
+- 本地验收时 `origin` 指向交付 bundle；后续代码同步的授权目标更新为 `https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley.git`。历史验收日志中的旧 remote 和暂定名称保留为当时的记录。
 
 没有改变游戏运行代码、场景、UI、玩法、资产、引擎或存档格式。`src/game/` 仍为未接入运行时的候选提取；GLB 仍为参考导出，运行时使用程序化几何。旧验收报告可从交付 HEAD 恢复，冻结审查合同保持原样。
 
@@ -91,6 +93,6 @@ PASS 仅限列明的执行层。PARTIAL / 待签核不是完整门槛通过。
 
 **本地自动化工程检查通过；建议维持 G2.5 HOLD / NO-GO 进入 G3 或发布。** 未复现需要修改游戏源码的缺陷，本轮新增可执行验收与可核查证据。
 
-独立工作已完成。剩余为作者对九宫格及连接效果的签核、性能预算和目标设备/真人试玩决定。请据此决定本地 G2.5 GO；收到 GO 和明确授权后再开展私有 `ROOM-Game` 的 GitHub 集成。Vercel Preview 仍须单独批准，生产部署不在范围内。完整 Booklet 未随包提供，跨阶段前需补齐。
+本地独立验收工作已完成。剩余为作者对九宫格及连接效果的签核、性能预算和目标设备/真人试玩决定。本次 GitHub 代码同步根据后续明确授权执行，不代表本地 G2.5 GO，也不包括远程 CI 或部署验收。Vercel Preview 仍须在 GO 后单独批准，生产部署不在范围内。完整 Booklet 未随包提供，跨阶段前需补齐。
 
 复现步骤见 [tests/e2e/G25_RUNBOOK.md](tests/e2e/G25_RUNBOOK.md)。没有声称远程 CI、托管访问、硬件性能或下一阶段已通过。
