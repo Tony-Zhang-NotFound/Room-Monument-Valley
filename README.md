@@ -4,7 +4,9 @@
 
 本轮把资产库 v0.1 的旋转梯、门框、旅人和安全标记组合为一条可以按规则完成的短路径。黑白灰建筑、暗红机关、赭黄终点；无描边和纹理贴图。
 
-代码仓库：[Tony-Zhang-NotFound/Room-Monument-Valley](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley)。本次仅同步代码、历史和验收成果，不是正式发布或 G2.5 自动通过。
+代码仓库：[Tony-Zhang-NotFound/Room-Monument-Valley](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley)。代码、历史及验收成果已同步；代码同步和测试部署均不代表正式发布或 G2.5 自动通过。
+
+交互测试部署已另行获准，统一使用 GitHub Pages；G2.5 HOLD 继续保留。部署生成、启用步骤、真实访问检查和网络阻断记录见 [部署说明](docs/DEPLOYMENT.md)。网站仅在实际线上验证后才标为可用。
 
 ## G2.5 浏览器九宫格
 
@@ -73,7 +75,7 @@ node scripts/export.mjs
 
 独立 ROOM 项目的远程目标为 `Tony-Zhang-NotFound/Room-Monument-Valley`。用户已授权以非强制推送同步 `main`、`g2.5-acceptance` 和 `g2-baseline`，保留历史。没有使用或修改作品集仓库。
 
-尚未完成：作者视觉容差与连接体验签核、目标设备性能验收、未看解法的真人试玩、远程 CI 与托管部署验证；完整 Booklet 也仍待补齐。代码同步不改变 HOLD G3 结论。Vercel Preview 和正式发布均未执行，仍需单独授权。
+尚未完成：作者视觉容差与连接体验签核、目标设备性能验收、未看解法的真人试玩、远程 CI 与托管部署验证；完整 Booklet 也仍待补齐。代码同步和测试部署均不改变 HOLD G3 结论。当前测试部署已获授权，正式发布仍未执行。
 
 ## 来源
 
