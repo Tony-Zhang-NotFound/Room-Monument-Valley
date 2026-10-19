@@ -1,0 +1,9 @@
+{
+  "project": "ROOM G2",
+  "variant": "quiet-arles",
+  "stage": "Interactive test / G2.5 HOLD",
+  "platform": "GitHub Pages",
+  "sourceCommit": "a0f6de561e9f8a61e0802b952d074938080d5574",
+  "playableSha256": "33545ebcdebd2a681ef30274596c5e64a8b513b8b240f719ee9ebbaebdf363e9",
+  "indexSha256": "faebc11974e09bb3bd34cdcf76ff90bc3e325d86c8bf28964fdbedd7bbceccc7"
+}
