@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-19T00:20:55.400Z",
+  "commit": "4ab193c52490b9cdd5094f577e39a83eeafb9917",
+  "kind": "Original source archive with read-only renderer stats seam appended; runtime and visuals unchanged",
+  "browser": "154.0.8037.57",
+  "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "dpr": 1,
+  "perf": {
+    "elapsedMs": 10022,
+    "frames": 88,
+    "meanMs": 113.78977272724734,
+    "p95Ms": 216.69999999999982,
+    "renderer": {
+      "calls": 32,
+      "triangles": 1294,
+      "geometries": 32,
+      "textures": 1
+    },
+    "state": {
+      "state": {
+        "node": "S",
+        "turn": 3,
+        "camera": 1,
+        "won": false
+      },
+      "busy": false,
+      "paused": false,
+      "player": [
+        -3.5,
+        0,
+        1.4
+      ],
+      "undoCount": 0
+    }
+  }
+}

@@ -27,6 +27,7 @@ fs.mkdirSync(out,{recursive:true});
   assert.equal(await page.locator('#scene').isVisible(),true);assert.equal(await page.evaluate(()=>!!document.querySelector('#scene').getContext('webgl2')),true);
   assert.match(await page.locator('aside').textContent(),/G2\.5 HOLD/);
   const deployment=await (await page.request.get(new URL('deployment.json',target.href).href)).json();
+  let art=null;if(target.pathname.includes('/quiet-arles/')){art=await page.evaluate(()=>roomArtInspect());assert.equal(deployment.variant,'quiet-arles');assert.equal(art.style,'quiet-arles');assert.ok(art.assets.some(a=>a.assetId==='bed_01'));}
   const downloaded=await page.request.get(new URL('ROOM_G2_Play.html',target.href).href);assert.equal(downloaded.status(),200);
   const downloadedSha=require('node:crypto').createHash('sha256').update(await downloaded.body()).digest('hex');assert.equal(downloadedSha,deployment.playableSha256);
   const click=async id=>{await page.locator('#'+id).click();await page.waitForFunction(()=>!roomInspect().busy,{},{timeout:45000});};
@@ -40,7 +41,7 @@ fs.mkdirSync(out,{recursive:true});
   assert.deepEqual(errors,[]);assert.deepEqual(failedRequests,[]);
   const optionalConsole=consoleErrors.filter(e=>e.location.url&&new URL(e.location.url).pathname==='/favicon.ico'&&e.text.includes('404'));
   assert.equal(consoleErrors.length,optionalConsole.length,'unexpected console error');
-  const report={url:target.href,date:new Date().toISOString(),browser:browser.version(),kind:target.protocol==='https:'?'hosted URL browser validation':'LOCAL artifact preflight only; not online evidence',deployment,stateAtScreenshot:state,final,errors,failedRequests,optionalConsole,status:'PASS'};
+  const report={url:target.href,date:new Date().toISOString(),browser:browser.version(),kind:target.protocol==='https:'?'hosted URL browser validation':'LOCAL artifact preflight only; not online evidence',deployment,art,stateAtScreenshot:state,final,errors,failedRequests,optionalConsole,status:'PASS'};
   fs.writeFileSync(path.join(out,'smoke.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
  }finally{await browser.close();}
 })().catch(e=>{fs.writeFileSync(path.join(out,'failure.json'),JSON.stringify({url:target.href,error:e.message},null,2));console.error(e);process.exitCode=1;});

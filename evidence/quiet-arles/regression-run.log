@@ -1,0 +1,11 @@
+PASS T01/T02/T03/T04/T05/T06 initial state, rotations, move guards and commit
+PASS T07/T08/T09/T15/T16 animated journey, pending input, pause, wrong views, win and replay
+PASS T10/T11 reset interrupts rotation/walk; undo restores stable pose
+PASS T12 reload pending walk/rotation restores committed state; undo clears
+PASS T13 corrupt/wrong-version saves and storage denial
+PASS T14 nine real browser views with actual canvas and endpoint debug
+PASS T17 real canvas pointer hits and button fallback
+PASS T18 system reduced motion reaches every stable transition
+PASS T19 real browser with WebGL disabled shows readable alert
+PASS T21-local source and bundled HTML work on a non-root subpath
+{"passed":10,"failed":0,"matrix":9}

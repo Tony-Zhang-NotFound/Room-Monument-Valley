@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-19T00:38:37.109Z",
+  "commit": "899a6e130a2b0628cbcdec8f7ae3a8607d391ab7",
+  "dirty": "M scripts/export.mjs\n?? evidence/quiet-arles/\n?? scripts/quiet-arles-manifest.mjs",
+  "browser": "154.0.8037.57",
+  "os": {
+    "platform": "linux",
+    "release": "6.18.55",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCPUs": 5
+  },
+  "base": "http://127.0.0.1:8882/",
+  "rendering": "Real Chromium WebGL 2 using SwiftShader software rendering; not target hardware performance",
+  "engineeringToleranceCssPx": 1,
+  "authoredTolerance": "Not yet approved by owner",
+  "browserInfo": {
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "dpr": 1,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "vendor": "Google Inc. (Google)"
+  }
+}

@@ -25,6 +25,8 @@ export function makeScene({style='quiet-arles'}={}){
  const endPoints={};for(const name of ['A','B']){const marker=new THREE.Mesh(new THREE.SphereGeometry(.075,12,8),new THREE.MeshBasicMaterial({color:name==='A'?0x2e6862:0xce9a49}));marker.position.set(...POS[name]);marker.visible=false;marker.name='Endpoint_'+name;world.add(marker);endPoints[name]=marker;}
  world.traverse(o=>{if(o.isMesh){o.castShadow=o.receiveShadow=true;}});
  const parts={world,rotor,mask,player,door,markers,endPoints,material,style:'classic'};
+ const geometries=new Set(),privateMaterials=new Set([...Object.values(material),markerMaterial,...Object.values(endPoints).map(o=>o.material)]);world.traverse(o=>{if(o.isMesh)geometries.add(o.geometry);});let disposed=false;
+ parts.dispose=()=>{if(disposed)return;disposed=true;for(const g of geometries)g.dispose();for(const m of privateMaterials)m.dispose();};
  return style==='classic'?parts:applyQuietArles(parts);
 }
 export function setPose(scene,state){scene.rotor.rotation.y=state.turn*Math.PI/2;scene.player.position.set(...POS[state.node]);scene.world.getObjectByName('LeftWall').visible=state.camera!==1;scene.world.updateMatrixWorld(true);}

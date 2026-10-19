@@ -1,0 +1,871 @@
+{
+  "version": "quiet-arles-01",
+  "units": "metres",
+  "upAxis": "Y",
+  "runtime": "synchronous original procedural geometry; no GLB or image loads",
+  "configuration": "src/quiet-arles.mjs",
+  "palette": {
+    "wall": "#A6A4C4",
+    "wood": "#D6AD58",
+    "blanket": "#B9574D",
+    "window": "#78927B",
+    "floor": "#BB8875",
+    "linen": "#EEE6D2",
+    "background": "#E5E0EB",
+    "woodEdge": "#B78A43",
+    "woodLight": "#E3BE72",
+    "floorSeam": "#AA7969",
+    "cream": "#E5DBC3",
+    "ink": "#474554",
+    "glass": "#D4DDC9",
+    "slate": "#61776D"
+  },
+  "presentation": {
+    "name": "Quiet Arles",
+    "background": "#E5E0EB",
+    "keyColor": "#FFF1D8",
+    "keyIntensity": 2.65,
+    "keyPosition": [
+      -3,
+      10,
+      -3
+    ],
+    "sky": "#FFF7E8",
+    "ambientGround": "#C5BCD0",
+    "ambientIntensity": 2.3,
+    "exposure": 1.02,
+    "shadowSize": 1024,
+    "shadowExtent": 8,
+    "groundY": -0.48,
+    "maskName": "灰绿色屏风"
+  },
+  "layout": [
+    {
+      "assetId": "bed_01",
+      "name": "ArlesBed",
+      "position": [
+        4.42,
+        0,
+        1.84
+      ],
+      "rotationY": 0,
+      "layer": "Furniture",
+      "collision": true,
+      "pickable": false,
+      "state": "static"
+    },
+    {
+      "assetId": "table_01",
+      "name": "ArlesTable",
+      "position": [
+        -3.46,
+        0,
+        -2.19
+      ],
+      "rotationY": 0,
+      "layer": "Furniture",
+      "collision": true,
+      "pickable": false,
+      "state": "static"
+    },
+    {
+      "assetId": "chair_01",
+      "name": "ArlesChair",
+      "position": [
+        -3.31,
+        0,
+        -0.94
+      ],
+      "rotationY": 0.18,
+      "layer": "Furniture",
+      "collision": true,
+      "pickable": false,
+      "state": "static"
+    },
+    {
+      "assetId": "window_01",
+      "name": "ArlesWindow",
+      "position": [
+        -1,
+        3.75,
+        -3.36
+      ],
+      "rotationY": 0,
+      "layer": "Architecture",
+      "collision": false,
+      "pickable": false,
+      "state": "static"
+    },
+    {
+      "assetId": "frame_01",
+      "name": "ArlesLandscape",
+      "position": [
+        2.75,
+        3.65,
+        -3.23
+      ],
+      "rotationY": 0,
+      "layer": "Props",
+      "collision": false,
+      "pickable": false,
+      "state": "static"
+    },
+    {
+      "assetId": "frame_small",
+      "name": "ArlesPortrait",
+      "position": [
+        -3.45,
+        2.95,
+        -3.23
+      ],
+      "rotationY": -0.035,
+      "layer": "Props",
+      "collision": false,
+      "pickable": false,
+      "state": "static"
+    }
+  ],
+  "assets": [
+    {
+      "name": "Base",
+      "constructionParts": [
+        "BeveledPlinth",
+        "TerracottaFloor",
+        "FloorJoint",
+        "FloorJoint",
+        "FloorJoint",
+        "FloorJoint",
+        "FloorJoint",
+        "FloorJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint",
+        "StaggeredJoint"
+      ],
+      "collision": "walkable floor y=0",
+      "assetId": "base_01+floor_01",
+      "layer": "Architecture",
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_cream",
+        "Arles_floor",
+        "Arles_floorSeam"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -4.5,
+          -0.47999998927116394,
+          -3.4000000953674316
+        ],
+        "max": [
+          6.300000190734863,
+          0.003000000026077032,
+          3.3999998569488525
+        ]
+      }
+    },
+    {
+      "name": "RearWall",
+      "constructionParts": [
+        "WindowCutWall",
+        "RearSkirting"
+      ],
+      "assetId": "wall_01",
+      "layer": "Architecture",
+      "pickable": false,
+      "collision": true,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_wall",
+        "Arles_cream"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -4.51200008392334,
+          -0.012000000104308128,
+          -3.5420000553131104
+        ],
+        "max": [
+          6.311999797821045,
+          5.711999893188477,
+          -3.1500000953674316
+        ]
+      }
+    },
+    {
+      "name": "ArlesBed",
+      "constructionParts": [
+        "BedFoot",
+        "BedFoot",
+        "BedFoot",
+        "BedFoot",
+        "BedSideRail",
+        "BedSideRail",
+        "BedSlattedSupport",
+        "Mattress",
+        "RedQuilt",
+        "FoldedLinen",
+        "SoftPillow",
+        "Headboard",
+        "BedPost",
+        "BedFinial",
+        "BedPost",
+        "BedFinial",
+        "BoardJoin",
+        "BoardJoin",
+        "BoardJoin",
+        "Footboard",
+        "BedPost",
+        "BedFinial",
+        "BedPost",
+        "BedFinial",
+        "BoardJoin",
+        "BoardJoin",
+        "BoardJoin"
+      ],
+      "assetId": "bed_01",
+      "position": [
+        4.42,
+        0,
+        1.84
+      ],
+      "rotationY": 0,
+      "layer": "Furniture",
+      "collision": true,
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_wood",
+        "Arles_woodEdge",
+        "Arles_linen",
+        "Arles_blanket",
+        "Arles_woodLight"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          4.42,
+          0,
+          1.84
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          3.3349999618530273,
+          -2.1457672971791908e-8,
+          0.48499998092651375
+        ],
+        "max": [
+          5.505000038146973,
+          1.659999966621399,
+          3.195000019073486
+        ]
+      }
+    },
+    {
+      "name": "ArlesTable",
+      "constructionParts": [
+        "TableTop",
+        "TableLeg",
+        "TableLeg",
+        "TableLeg",
+        "TableLeg",
+        "ApronFront",
+        "ApronBack",
+        "ApronSide",
+        "ApronSide",
+        "BasinRim",
+        "BasinWater",
+        "PitcherBody",
+        "PitcherNeck",
+        "PitcherHandle",
+        "ClosedBook",
+        "BookPages"
+      ],
+      "assetId": "table_01",
+      "position": [
+        -3.46,
+        0,
+        -2.19
+      ],
+      "rotationY": 0,
+      "layer": "Furniture",
+      "collision": true,
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_wood",
+        "Arles_woodEdge",
+        "Arles_linen",
+        "Arles_glass",
+        "Arles_window"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          -3.46,
+          0,
+          -2.19
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -4.135000011920929,
+          -2.1457672971791908e-8,
+          -2.5900000059604644
+        ],
+        "max": [
+          -2.784999988079071,
+          1.4850000143051147,
+          -1.789999964237213
+        ]
+      }
+    },
+    {
+      "name": "ArlesChair",
+      "constructionParts": [
+        "ChairLeg",
+        "ChairLeg",
+        "ChairLeg",
+        "ChairLeg",
+        "SeatFrame",
+        "WovenSeat",
+        "BackRail",
+        "BackRail",
+        "LegStretcher",
+        "LegStretcher"
+      ],
+      "assetId": "chair_01",
+      "position": [
+        -3.31,
+        0,
+        -0.94
+      ],
+      "rotationY": 0.18,
+      "layer": "Furniture",
+      "collision": true,
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_wood",
+        "Arles_linen",
+        "Arles_woodEdge"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          -3.31,
+          0,
+          -0.94
+        ],
+        "rotationY": 0.18,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -3.6637812074993215,
+          -1.19209286886246e-9,
+          -1.289757140740163
+        ],
+        "max": [
+          -2.9562187978361756,
+          1.1649999618530273,
+          -0.5902428885806641
+        ]
+      }
+    },
+    {
+      "name": "ArlesWindow",
+      "constructionParts": [
+        "WindowJamb",
+        "WindowJamb",
+        "WindowRail",
+        "WindowRail",
+        "WindowReveal",
+        "WindowMullion",
+        "WindowCrossbar",
+        "WindowCrossbar",
+        "DeepWindowSill",
+        "ShutterPanel",
+        "ShutterBrace",
+        "ShutterBrace",
+        "ShutterBrace",
+        "ShutterPanel",
+        "ShutterBrace",
+        "ShutterBrace",
+        "ShutterBrace"
+      ],
+      "assetId": "window_01",
+      "position": [
+        -1,
+        3.75,
+        -3.36
+      ],
+      "rotationY": 0,
+      "layer": "Architecture",
+      "collision": false,
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_window",
+        "Arles_glass",
+        "Arles_cream",
+        "Arles_slate"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          -1,
+          3.75,
+          -3.36
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -2.342573404312134,
+          2.6050000190734863,
+          -3.5200000113248824
+        ],
+        "max": [
+          0.3425734043121338,
+          4.850000023841858,
+          -2.9800000047683715
+        ]
+      }
+    },
+    {
+      "name": "ArlesLandscape",
+      "constructionParts": [
+        "Canvas",
+        "FrameVertical",
+        "FrameVertical",
+        "FrameHorizontal",
+        "FrameHorizontal",
+        "PaintedSky",
+        "PaintedField",
+        "AbstractSun"
+      ],
+      "assetId": "frame_01",
+      "position": [
+        2.75,
+        3.65,
+        -3.23
+      ],
+      "rotationY": 0,
+      "layer": "Props",
+      "collision": false,
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_linen",
+        "Arles_wood",
+        "Arles_wall",
+        "Arles_window",
+        "Arles_woodLight"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          2.75,
+          3.65,
+          -3.23
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          2.072499990463257,
+          3.1574999928474425,
+          -3.249999999552965
+        ],
+        "max": [
+          3.427500009536743,
+          4.142500007152558,
+          -3.1599999997019768
+        ]
+      }
+    },
+    {
+      "name": "ArlesPortrait",
+      "constructionParts": [
+        "Canvas",
+        "FrameVertical",
+        "FrameVertical",
+        "FrameHorizontal",
+        "FrameHorizontal",
+        "PaintedSky",
+        "PaintedField",
+        "AbstractSun"
+      ],
+      "assetId": "frame_small",
+      "position": [
+        -3.45,
+        2.95,
+        -3.23
+      ],
+      "rotationY": -0.035,
+      "layer": "Props",
+      "collision": false,
+      "pickable": false,
+      "state": "static",
+      "source": "src/quiet-arles.mjs#createWorkshop",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_linen",
+        "Arles_wood",
+        "Arles_wall",
+        "Arles_window",
+        "Arles_woodLight"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          -3.45,
+          2.95,
+          -3.23
+        ],
+        "rotationY": -0.035,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -3.819724436208291,
+          2.4824999988079073,
+          -3.2628476232595864
+        ],
+        "max": [
+          -3.082025206613177,
+          3.417500001192093,
+          -3.1471829960081332
+        ]
+      }
+    },
+    {
+      "name": "M01",
+      "assetId": "rotator",
+      "version": "0.1.0",
+      "units": "metres",
+      "upAxis": "Y",
+      "stage": "greybox",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "layer": "Gameplay",
+      "pickable": true,
+      "collision": "existing 2.73 m sweep exclusion",
+      "state": "turn0..3",
+      "source": "src/assets-source.js + Quiet Arles material override",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_ink",
+        "Arles_blanket"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotationY": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.6000000238418586,
+          -7.450580569168253e-10,
+          -0.6000000238418579
+        ],
+        "max": [
+          0.6000000238418579,
+          2,
+          2.6499999880790712
+        ]
+      }
+    },
+    {
+      "name": "GoalDoor",
+      "assetId": "door_01",
+      "version": "0.1.0",
+      "units": "metres",
+      "upAxis": "Y",
+      "stage": "greybox",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "layer": "Gameplay",
+      "pickable": false,
+      "collision": "existing goal anchor G",
+      "state": "won emissive only; private material",
+      "source": "src/assets-source.js + Quiet Arles material override",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_window",
+        "Arles_woodLight"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          5.7,
+          3.12,
+          -0.25
+        ],
+        "rotationY": 0,
+        "scale": [
+          0.8,
+          0.95,
+          0.8
+        ]
+      },
+      "bounds": {
+        "min": [
+          5.340000009536744,
+          3.1200000113248825,
+          -0.29799999892711637
+        ],
+        "max": [
+          6.059999990463257,
+          4.9249999886751175,
+          -0.17000000035762786
+        ]
+      }
+    },
+    {
+      "name": "TransitionMask",
+      "assetId": "occluder",
+      "layer": "Gameplay",
+      "pickable": false,
+      "collision": "existing transfer occlusion plane",
+      "state": "static",
+      "source": "src/assets-source.js + Quiet Arles material override",
+      "parent": "Quiet_Arles_01",
+      "materialId": "arles-palette",
+      "materialIds": [
+        "Arles_window",
+        "Arles_wood"
+      ],
+      "castShadow": true,
+      "receiveShadow": true,
+      "releaseOwner": "quiet-arles scene",
+      "reuse": "shared workshop geometry/material caches; baked static components",
+      "transform": {
+        "position": [
+          4.45,
+          4.14,
+          1.8
+        ],
+        "rotationY": 0.7853981633974483,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "bounds": {
+        "min": [
+          4.006290512296384,
+          3.279999985694885,
+          1.3562905122963835
+        ],
+        "max": [
+          4.893709492971973,
+          5.000000014305114,
+          2.2437094929719725
+        ]
+      }
+    }
+  ],
+  "logicalSubassets": [
+    {
+      "assetId": "floor_01",
+      "bakedInto": "Base",
+      "parts": [
+        "TerracottaFloor",
+        "FloorJoint",
+        "StaggeredJoint"
+      ]
+    },
+    {
+      "assetId": "prop_set_01",
+      "bakedInto": "ArlesTable",
+      "parts": [
+        "BasinRim",
+        "BasinWater",
+        "PitcherBody",
+        "PitcherNeck",
+        "PitcherHandle",
+        "ClosedBook",
+        "BookPages"
+      ]
+    },
+    {
+      "assetId": "door_01",
+      "sceneNodes": [
+        "GoalFrame",
+        "GoalDoor"
+      ],
+      "state": "static door geometry; win changes only private emissive materials; no hinged animation"
+    }
+  ],
+  "geometryStrategy": {
+    "sourceMeshes": 32,
+    "renderMeshes": 12,
+    "sourceAssets": [
+      "Base",
+      "RearWall",
+      "ArlesBed",
+      "ArlesTable",
+      "ArlesChair",
+      "ArlesWindow",
+      "ArlesLandscape",
+      "ArlesPortrait"
+    ],
+    "notes": "Source/proxy groups retain their construction metadata and bounds. Their meshes are hidden; a per-material static render batch draws them once. Gameplay meshes, LeftWall visibility, door/player and the transfer mask remain separate."
+  },
+  "collisions": "Existing game follows authored routes, not a physics/navmesh engine. Registry collision fields and geometry tests document clearances; no new runtime collision solver is implied.",
+  "references": "Input handoff images used only for offline design analysis; no third-party reference image is loaded or bundled. Decorative paintings are original abstract geometry.",
+  "legacyExports": "models/*.glb, asset-manifest.json and src/render-geometry.json remain G2 reference exports. scripts/export.mjs explicitly uses classic style."
+}

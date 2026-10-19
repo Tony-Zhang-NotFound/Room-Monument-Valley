@@ -1,0 +1,9 @@
+{
+  "handedOffSource": "4ab193c52490b9cdd5094f577e39a83eeafb9917",
+  "testedArtSource": "e4a05748bd81354f2e8b6ff0f61e9a99a20208a6",
+  "baselineSha256": "8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab",
+  "playableSha256": "33545ebcdebd2a681ef30274596c5e64a8b513b8b240f719ee9ebbaebdf363e9",
+  "unchangedGameplayDiff": "",
+  "referenceImagesIncludedInProduction": false,
+  "laterChanges": "Classic fallback disposal ownership and publishing tools; rendered geometry, lighting and animation loop remain those measured at e4a0574."
+}

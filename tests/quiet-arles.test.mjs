@@ -61,3 +61,8 @@ test('fitted shadow frustum contains every visible caster through all four rotor
  }
  s.dispose();
 });
+
+test('classic fallback disposal preserves the shared asset library materials',()=>{
+ const a=makeScene({style:'classic'}),b=makeScene({style:'classic'});let sharedReleases=0;const materials=new Set();b.world.traverse(o=>{if(o.isMesh)materials.add(o.material);});for(const m of materials)m.addEventListener('dispose',()=>sharedReleases++);
+ a.dispose();a.dispose();assert.equal(sharedReleases,0,'another classic scene lost shared materials');b.dispose();
+});

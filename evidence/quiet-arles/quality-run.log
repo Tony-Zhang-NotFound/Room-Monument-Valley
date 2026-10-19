@@ -1,0 +1,4 @@
+PASS idle invalidation and resource inventory
+PASS paired route benchmark
+PASS asset fallback
+{"status":"PASS","checks":["Stable idle stops redundant WebGL draws (not claimed as 60 rendered FPS)","Identical animated full route measured before/after on same browser, viewport, DPR and host","12 resets keep resource counts stable","On-demand rendering refreshes actual canvas on gameplay state changes","Endpoint visibility invalidates cached canvas","Injected art-construction failure falls back to playable classic scene without page errors","Standalone art build loads successfully"],"animationBeforeFps":8.345718532068137,"animationAfterFps":6.868302782659052}

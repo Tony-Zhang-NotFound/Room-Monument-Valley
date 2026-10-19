@@ -2,7 +2,7 @@ name: Verify ROOM test site
 
 on:
   push:
-    branches: [main]
+    branches: [main, art/quiet-arles]
     paths:
       - .github/workflows/verify-pages.yml
       - tests/e2e/deployed-smoke.cjs
@@ -19,6 +19,9 @@ jobs:
   browser:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    env:
+      ROOM_SMOKE_URL: ${{ github.ref == 'refs/heads/art/quiet-arles' && 'https://tony-zhang-notfound.github.io/Room-Monument-Valley/quiet-arles/' || 'https://tony-zhang-notfound.github.io/Room-Monument-Valley/' }}
+      ROOM_EVIDENCE_BRANCH: ${{ github.ref == 'refs/heads/art/quiet-arles' && 'quiet-arles-evidence' || 'deployment-evidence' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,10 +35,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes fonts-noto-cjk
+      - name: Verify rules, geometry and reproducible standalone build
+        run: |
+          node --test --test-reporter=tap tests/*.test.mjs
+          node scripts/bundle.mjs
+          git diff --exit-code -- ROOM_G2_Play.html
       - name: Wait for the Pages artifact to become available
         run: |
           for attempt in $(seq 1 30); do
-            if curl --fail --silent --show-error https://tony-zhang-notfound.github.io/Room-Monument-Valley/deployment.json -o "$RUNNER_TEMP/room-deployment.json"; then
+            if curl --fail --silent --show-error "${ROOM_SMOKE_URL}deployment.json" -o "$RUNNER_TEMP/room-deployment.json"; then
               node -e 'const d=require(process.argv[1]); if(d.project!=="ROOM G2" || !d.sourceCommit)process.exit(1)' "$RUNNER_TEMP/room-deployment.json"
               exit 0
             fi
@@ -49,16 +57,16 @@ jobs:
           ROOM_CHROMIUM: /usr/bin/google-chrome
         run: |
           export NODE_PATH="$RUNNER_TEMP/room-browser/node_modules"
-          node tests/e2e/deployed-smoke.cjs https://tony-zhang-notfound.github.io/Room-Monument-Valley/ "$RUNNER_TEMP/room-online-evidence"
+          node tests/e2e/deployed-smoke.cjs "$ROOM_SMOKE_URL" "$RUNNER_TEMP/room-online-evidence"
       - name: Preserve live screenshots and result on a separate evidence branch
         if: ${{ always() && steps.smoke.outcome != 'skipped' }}
         run: |
           test -d "$RUNNER_TEMP/room-online-evidence"
-          if git ls-remote --exit-code --heads origin deployment-evidence > /dev/null; then
-            git fetch origin deployment-evidence
-            git switch -c deployment-evidence origin/deployment-evidence
+          if git ls-remote --exit-code --heads origin "$ROOM_EVIDENCE_BRANCH" > /dev/null; then
+            git fetch origin "$ROOM_EVIDENCE_BRANCH"
+            git switch -c "$ROOM_EVIDENCE_BRANCH" "origin/$ROOM_EVIDENCE_BRANCH"
           else
-            git switch --orphan deployment-evidence
+            git switch --orphan "$ROOM_EVIDENCE_BRANCH"
           fi
           git rm -r --ignore-unmatch latest
           mkdir -p latest
@@ -78,7 +86,7 @@ jobs:
           git add README.md latest
           if ! git diff --cached --quiet; then
             git commit -m "test: record hosted ROOM browser evidence (run $GITHUB_RUN_ID)"
-            git push origin HEAD:refs/heads/deployment-evidence
+            git push origin "HEAD:refs/heads/$ROOM_EVIDENCE_BRANCH"
           fi
       - name: Preserve the smoke test failure status
         if: ${{ always() && steps.smoke.outcome != 'success' }}

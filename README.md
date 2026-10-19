@@ -1,3 +1,21 @@
+# ROOM / Quiet Arles — 静谧的阿尔
+
+本分支提供“艺术家的房间 01”可玩美术样板：黄床红被、绿窗、蓝紫墙、暖色地板和分层桌椅；原 G2 解法与相机控制保留。**G2.5 HOLD：尚未正式验收。**
+
+![Quiet Arles 实际运行画面](evidence/quiet-arles/after/default.png)
+
+[美术样板验收报告](docs/QUIET_ARLES_ACCEPTANCE.md) · [同视角前后对比](evidence/quiet-arles/before-after.png) · [床局部](evidence/quiet-arles/after/bed-detail.png) · [新九宫格](evidence/quiet-arles/nine-view-overview.png) · [资产清单](docs/quiet-arles-assets.json)
+
+直接下载本分支 `ROOM_G2_Play.html` 用桌面 Chrome/Edge 打开，或在仓库根目录运行 `python3 -m http.server 8882 --bind 127.0.0.1`。没有应用依赖安装；`node --test tests/*.test.mjs` 执行当前 26 项检查。需要重建单文件时运行 `node scripts/bundle.mjs`。完整基线复现与真实浏览器命令见 [Quiet Arles 工程说明](docs/QUIET_ARLES.md)。
+
+家具、窗口和装饰是原创程序化几何；参考图片不作为贴图，也不进入游戏包。旧 `models/*.glb` 保留为 G2 参考导出。性能限制：同一云端 SwiftShader 完整路线约 8.35→6.87 FPS，空闲按需渲染不冒充 60 FPS；真实 GPU/手机性能仍待验收。
+
+---
+
+## 历史 G2 与测试站说明
+
+以下为原 G2 交付记录；原试玩根地址继续保留，新美术未合并到 main。当前美术结果以上述报告为准。
+
 > 最新验收见 [G2_5_ACCEPTANCE.md](G2_5_ACCEPTANCE.md)：本地工程检查及真实 WebGL 浏览器验收通过，九宫格和视频已保存；作者视觉签核和目标设备验收仍待完成，维持 HOLD G3。
 
 # ROOM / 悬梯之间 · G2 v0.2

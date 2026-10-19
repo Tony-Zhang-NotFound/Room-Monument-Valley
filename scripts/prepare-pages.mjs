@@ -6,15 +6,23 @@ import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const quietArles=process.argv.includes('--quiet-arles');
 const output=process.argv[2]?path.resolve(process.argv[2]):fs.mkdtempSync(path.join(os.tmpdir(),'room-pages-'));
 if(output===root||output.startsWith(root+path.sep))throw Error('Publish outside the source checkout');
 if(process.argv[2])fs.mkdirSync(output);
 const sha=data=>crypto.createHash('sha256').update(data).digest('hex');
 const playable=fs.readFileSync(path.join(root,'ROOM_G2_Play.html'));
 const baseline=fs.readFileSync(path.join(root,'baseline/ROOM_G2_Play.html'));
-if(!playable.equals(baseline))throw Error('Playable differs from frozen G2 baseline; review before publishing');
+if(sha(baseline)!=='8e336fca344ebe9fc0a4e1b2f8dd681f34ddc25f4c70bf4d3ffbb88fb178fbab')throw Error('Frozen G2 baseline was modified');
+if(quietArles){
+ if(!playable.toString('utf8').includes('Quiet_Arles_01'))throw Error('Expected Quiet Arles build');
+ for(const file of ['src/game.mjs','src/level.mjs']){
+  const frozen=execFileSync('git',['show','g2-baseline:'+file],{cwd:root});
+  if(!frozen.equals(fs.readFileSync(path.join(root,file))))throw Error('Gameplay core differs from G2 baseline: '+file);
+ }
+}else if(!playable.equals(baseline))throw Error('Playable differs from frozen G2; reviewed art previews require --quiet-arles');
 const sourceCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
-const notice='<p class="notice" role="note">测试试玩 · G2.5 HOLD<br>尚未完成正式验收。<a href="./ROOM_G2_Play.html" download>下载单文件试玩版</a></p>';
+const notice=`<p class="notice" role="note">测试试玩${quietArles?' · Quiet Arles':''} · G2.5 HOLD<br>尚未完成正式验收。<a href="./ROOM_G2_Play.html" download>下载单文件试玩版</a></p>`;
 let html=playable.toString('utf8');
 if(!html.includes('<aside>'))throw Error('Expected sidebar missing');
 html=html.replace('<aside>','<aside>'+notice).replace('<head>','<head><meta name="robots" content="noindex, nofollow">');
@@ -23,7 +31,7 @@ fs.writeFileSync(path.join(output,'ROOM_G2_Play.html'),playable);
 fs.copyFileSync(path.join(root,'vendor/THREE-LICENSE.txt'),path.join(output,'THREE-LICENSE.txt'));
 fs.writeFileSync(path.join(output,'.nojekyll'),'');
 fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nDisallow: /\n');
-const metadata={project:'ROOM G2',stage:'Interactive test / G2.5 HOLD',platform:'GitHub Pages',sourceCommit,playableSha256:sha(playable),indexSha256:sha(html)};
+const metadata={project:'ROOM G2',variant:quietArles?'quiet-arles':'classic',stage:'Interactive test / G2.5 HOLD',platform:'GitHub Pages',sourceCommit,playableSha256:sha(playable),indexSha256:sha(html)};
 fs.writeFileSync(path.join(output,'deployment.json'),JSON.stringify(metadata,null,2)+'\n');
 fs.writeFileSync(path.join(output,'README.md'),`# ROOM interactive test site\n\nSource commit: ${sourceCommit}\n\nG2.5 HOLD remains in effect. This branch contains generated static hosting files only. Source and acceptance history remain on main and g2.5-acceptance.\n`);
 console.log(JSON.stringify({output,...metadata},null,2));

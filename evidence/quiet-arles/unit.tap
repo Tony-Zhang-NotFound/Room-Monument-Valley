@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: single-file deliverable embeds code and CSS without runtime file dependencies
+ok 1 - single-file deliverable embeds code and CSS without runtime file dependencies
+  ---
+  duration_ms: 31.45672
+  type: 'test'
+  ...
+# Subtest: controller runs forward, pauses mid-animation, wins, undoes, resets and saves
+ok 2 - controller runs forward, pauses mid-animation, wins, undoes, resets and saves
+  ---
+  duration_ms: 7.119364
+  type: 'test'
+  ...
+# Subtest: reduced motion commits instantly; reset safely cancels live animation
+ok 3 - reduced motion commits instantly; reset safely cancels live animation
+  ---
+  duration_ms: 0.416577
+  type: 'test'
+  ...
+# Subtest: 21 reachable stable states; all can reach the door and return to safety
+ok 4 - 21 reachable stable states; all can reach the door and return to safety
+  ---
+  duration_ms: 8.525109
+  type: 'test'
+  ...
+# Subtest: full forward route requires both rotated staircase and aligned camera
+ok 5 - full forward route requires both rotated staircase and aligned camera
+  ---
+  duration_ms: 0.349586
+  type: 'test'
+  ...
+# Subtest: busy locks commands and saves only the last stable checkpoint
+ok 6 - busy locks commands and saves only the last stable checkpoint
+  ---
+  duration_ms: 0.312751
+  type: 'test'
+  ...
+# Subtest: reset invalidates a pending completion token
+ok 7 - reset invalidates a pending completion token
+  ---
+  duration_ms: 1.221888
+  type: 'test'
+  ...
+# Subtest: undo reverses a stable move and restores camera and module state
+ok 8 - undo reverses a stable move and restores camera and module state
+  ---
+  duration_ms: 0.513112
+  type: 'test'
+  ...
+# Subtest: save schema refuses corrupt, old, fractional, and impossible states
+ok 9 - save schema refuses corrupt, old, fractional, and impossible states
+  ---
+  duration_ms: 0.332691
+  type: 'test'
+  ...
+# Subtest: cancel returns to stable state without history pollution
+ok 10 - cancel returns to stable state without history pollution
+  ---
+  duration_ms: 0.291339
+  type: 'test'
+  ...
+# Subtest: endpoint and bridge edge projection align across three viewport ratios
+ok 11 - endpoint and bridge edge projection align across three viewport ratios
+  ---
+  duration_ms: 2.478981
+  type: 'test'
+  ...
+# Subtest: the character silhouette stays hidden behind the mask throughout the depth transfer
+ok 12 - the character silhouette stays hidden behind the mask throughout the depth transfer
+  ---
+  duration_ms: 94.760358
+  type: 'test'
+  ...
+# Subtest: the full rotating module stays clear of fixed architecture through its sweep
+ok 13 - the full rotating module stays clear of fixed architecture through its sweep
+  ---
+  duration_ms: 52.390122
+  type: 'test'
+  ...
+# Subtest: normal staircase path maintains foot contact or step clearance
+ok 14 - normal staircase path maintains foot contact or step clearance
+  ---
+  duration_ms: 9.947772
+  type: 'test'
+  ...
+# Subtest: animation paths start and finish at stable anchors, including reverse paths
+ok 15 - animation paths start and finish at stable anchors, including reverse paths
+  ---
+  duration_ms: 1.276952
+  type: 'test'
+  ...
+# Subtest: baseline oracle: exhaustive stable states and commands preserve transitions and saves
+ok 16 - baseline oracle: exhaustive stable states and commands preserve transitions and saves
+  ---
+  duration_ms: 18.423116
+  type: 'test'
+  ...
+# Subtest: T01-T13/T15: explicit expectations on extracted core, pending and recovery
+ok 17 - T01-T13/T15: explicit expectations on extracted core, pending and recovery
+  ---
+  duration_ms: 1.08926
+  type: 'test'
+  ...
+# Subtest: deterministic lifecycle parity: 10000 mixed commands, stale commits, cancel, reset, undo
+ok 18 - deterministic lifecycle parity: 10000 mixed commands, stale commits, cancel, reset, undo
+  ---
+  duration_ms: 142.363191
+  type: 'test'
+  ...
+# Subtest: level constants and bidirectional routes are unchanged
+ok 19 - level constants and bidirectional routes are unchanged
+  ---
+  duration_ms: 2.074462
+  type: 'test'
+  ...
+# Subtest: Arles furniture is grounded, outside travel clearance and separate from loft supports
+ok 20 - Arles furniture is grounded, outside travel clearance and separate from loft supports
+  ---
+  duration_ms: 91.590261
+  type: 'test'
+  ...
+# Subtest: static art is rendered once and its source nodes cannot become input blockers
+ok 21 - static art is rendered once and its source nodes cannot become input blockers
+  ---
+  duration_ms: 26.984519
+  type: 'test'
+  ...
+# Subtest: winning door materials do not share emissive state with furniture or markers
+ok 22 - winning door materials do not share emissive state with furniture or markers
+  ---
+  duration_ms: 24.889026
+  type: 'test'
+  ...
+# Subtest: scene disposal is idempotent and never releases another instance resources
+ok 23 - scene disposal is idempotent and never releases another instance resources
+  ---
+  duration_ms: 36.27425
+  type: 'test'
+  ...
+# Subtest: all Arles mesh attributes are finite with matte nonmetallic materials
+ok 24 - all Arles mesh attributes are finite with matte nonmetallic materials
+  ---
+  duration_ms: 26.947924
+  type: 'test'
+  ...
+# Subtest: fitted shadow frustum contains every visible caster through all four rotor poses
+ok 25 - fitted shadow frustum contains every visible caster through all four rotor poses
+  ---
+  duration_ms: 24.443084
+  type: 'test'
+  ...
+# Subtest: classic fallback disposal preserves the shared asset library materials
+ok 26 - classic fallback disposal preserves the shared asset library materials
+  ---
+  duration_ms: 2.607053
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 521.745002

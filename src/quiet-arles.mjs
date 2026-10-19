@@ -141,6 +141,7 @@ function createWorkshop(){
 
 export function applyQuietArles(parts){
  const workshop=createWorkshop(),world=parts.world,originalGeometries=new Set(),originalPrivateMaterials=new Set(Object.values(parts.material));
+ const releaseClassic=parts.dispose;
  world.name='Quiet_Arles_01';
  world.traverse(o=>{if(o.isMesh)originalGeometries.add(o.geometry);});
  for(const m of Object.values(parts.markers))originalPrivateMaterials.add(m.material);
@@ -195,7 +196,7 @@ export function applyQuietArles(parts){
  parts.batching={sourceMeshes,renderMeshes:batch.children.length,sourceAssets:batch.userData.sourceAssets};
  parts.style='quiet-arles';parts.presentation=ARLES_PRESENTATION;parts.assets=registry;parts.resourceStats=()=>workshop.stats();
  let disposed=false;
- parts.dispose=()=>{if(disposed)return;disposed=true;workshop.dispose();for(const g of originalGeometries)g.dispose();for(const m of originalPrivateMaterials)m.dispose();};
+ parts.dispose=()=>{if(disposed)return;disposed=true;workshop.dispose();if(releaseClassic)releaseClassic();else{for(const g of originalGeometries)g.dispose();for(const m of originalPrivateMaterials)m.dispose();}};
  parts.world.updateMatrixWorld(true);return parts;
- }catch(error){workshop.dispose();for(const g of originalGeometries)g.dispose();for(const m of originalPrivateMaterials)m.dispose();throw error;}
+ }catch(error){workshop.dispose();if(releaseClassic)releaseClassic();else{for(const g of originalGeometries)g.dispose();for(const m of originalPrivateMaterials)m.dispose();}throw error;}
 }
