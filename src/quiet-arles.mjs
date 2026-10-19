@@ -10,7 +10,7 @@ export const ARLES_LAYOUT=[
  {assetId:'frame_01',name:'ArlesLandscape',position:[2.75,3.65,-3.23],rotationY:0,layer:'Props',collision:false,pickable:false,state:'static'},
  {assetId:'frame_small',name:'ArlesPortrait',position:[-3.45,2.95,-3.23],rotationY:-.035,layer:'Props',collision:false,pickable:false,state:'static'}
 ];
-export const ARLES_PRESENTATION={name:'Quiet Arles',background:ARLES_PALETTE.background,keyColor:'#FFF1D8',keyIntensity:2.65,keyPosition:[-3,10,-3],sky:'#FFF7E8',ambientGround:'#BEB4C8',ambientIntensity:1.9,fillIntensity:.6,exposure:1.02,groundY:-.51,maskName:'灰绿色屏风'};
+export const ARLES_PRESENTATION={name:'Quiet Arles',background:ARLES_PALETTE.background,keyColor:'#FFF1D8',keyIntensity:2.65,keyPosition:[-3,10,-3],sky:'#FFF7E8',ambientGround:'#C5BCD0',ambientIntensity:2.3,exposure:1.02,groundY:-.51,maskName:'灰绿色屏风'};
 
 function createWorkshop(){
  const geometries=new Set(),materials=new Set(),cache=new Map(),mats=new Map();let disposed=false;
@@ -128,10 +128,10 @@ function createWorkshop(){
  function rearWall(){
   const g=group('RearWall');
   // Actual opening: x -2.1..0.1, y 2.65..4.85. Both cut faces have thickness.
-  box(g,'WallBelowWindow',[10.8,2.65,.26],'wall',[.9,1.325,-3.4],0);
-  box(g,'WallLeftOfWindow',[2.4,2.2,.26],'wall',[-3.3,3.75,-3.4],0);
-  box(g,'WallRightOfWindow',[6.2,2.2,.26],'wall',[3.2,3.75,-3.4],0);
-  box(g,'WallAboveWindow',[10.8,.85,.26],'wall',[.9,5.275,-3.4],0);
+  const shape=new THREE.Shape();shape.moveTo(-4.5,0);shape.lineTo(6.3,0);shape.lineTo(6.3,5.7);shape.lineTo(-4.5,5.7);shape.closePath();
+  const hole=new THREE.Path();hole.moveTo(-2.1,2.65);hole.lineTo(-2.1,4.85);hole.lineTo(.1,4.85);hole.lineTo(.1,2.65);hole.closePath();shape.holes.push(hole);
+  const geo=own(new THREE.ExtrudeGeometry(shape,{depth:.26,bevelEnabled:true,bevelThickness:.012,bevelSize:.012,bevelSegments:2,steps:1}));geo.translate(0,0,-3.53);
+  mesh(g,'WindowCutWall',geo,'wall');
   box(g,'RearSkirting',[10.65,.15,.10],'cream',[.9,.08,-3.20],.012);
   const b=bake(g);b.name='RearWall';return b;
  }
@@ -184,6 +184,15 @@ export function applyQuietArles(parts){
  register(world.getObjectByName('M01'),{assetId:'rotator',layer:'Gameplay',pickable:true,collision:'existing 2.73 m sweep exclusion',state:'turn0..3'});
  register(parts.door,{assetId:'door_01',layer:'Gameplay',pickable:false,collision:'existing goal anchor G',state:'won emissive only; private material'});
  register(parts.mask,{assetId:'occluder',layer:'Gameplay',pickable:false,collision:'existing transfer occlusion plane',state:'static'});
+ // The measured animation regression was dominated by additional draw calls.
+ // Reuse the existing bake helper across stationary decorations. Keep the
+ // source groups for inventory/bounds tests, but render only this one batch.
+ const sources=registry.filter(a=>a.layer!=='Gameplay').map(a=>world.getObjectByName(a.name));
+ const staging=workshop.group('StaticArtBatch');let sourceMeshes=0;
+ for(const object of sources){staging.add(object.clone(true));object.traverse(o=>{if(o.isMesh){o.visible=false;sourceMeshes++;}});}
+ const batch=workshop.bake(staging);batch.userData.renderBatchOnly=true;batch.userData.sourceAssets=sources.map(o=>o.name);batch.layers.set(1);
+ batch.traverse(o=>{o.layers.set(1);if(o.isMesh&&o.material.name==='Arles_floorSeam')o.castShadow=false;});world.add(batch);
+ parts.batching={sourceMeshes,renderMeshes:batch.children.length,sourceAssets:batch.userData.sourceAssets};
  parts.style='quiet-arles';parts.presentation=ARLES_PRESENTATION;parts.assets=registry;parts.resourceStats=()=>workshop.stats();
  let disposed=false;
  parts.dispose=()=>{if(disposed)return;disposed=true;workshop.dispose();for(const g of originalGeometries)g.dispose();for(const m of originalPrivateMaterials)m.dispose();};

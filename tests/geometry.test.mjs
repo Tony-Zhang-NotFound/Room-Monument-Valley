@@ -13,7 +13,7 @@ test('the character silhouette stays hidden behind the mask throughout the depth
  for(let i=0;i<=10;i++){const position=new THREE.Vector3(...POS.A).lerp(new THREE.Vector3(...POS.B),i/10);for(const p of points){const ray=new THREE.Raycaster(p.clone().add(position),dir,0,20);assert.ok(ray.intersectObject(s.mask).length>0,'unmasked vertex at transfer step '+i);}}
 });
 test('the full rotating module stays clear of fixed architecture through its sweep',()=>{
- const s=makeScene();const fixed=s.world.children.filter(o=>!['M01','Player','SafeNode'].includes(o.name)&&!o.name.startsWith('Target_')&&!o.name.startsWith('Endpoint_')&&o.name!=='Base');
+ const s=makeScene();const fixed=s.world.children.filter(o=>!['M01','Player','SafeNode'].includes(o.name)&&!o.name.startsWith('Target_')&&!o.name.startsWith('Endpoint_')&&o.name!=='Base'&&!o.userData.renderBatchOnly);
  const boxes=fixed.map(o=>[o.name,new THREE.Box3().setFromObject(o)]);const points=[];s.rotor.traverse(o=>{if(o.isMesh){const p=o.geometry.attributes.position;o.updateMatrix();for(let i=0;i<p.count;i++)points.push(new THREE.Vector3().fromBufferAttribute(p,i).applyMatrix4(o.matrix));}});
  const radius=Math.max(...points.map(p=>Math.hypot(p.x,p.z))),height=Math.max(...points.map(p=>p.y));assert.ok(radius<SWEEP_RADIUS);
  // A continuous cylindrical envelope also separates every fixed solid; not only sampled angles.

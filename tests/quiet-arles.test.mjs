@@ -17,10 +17,13 @@ test('Arles furniture is grounded, outside travel clearance and separate from lo
  s.dispose();
 });
 
-test('decorations are visible to the camera but cannot become first-hit input blockers',()=>{
+test('static art is rendered once and its source nodes cannot become input blockers',()=>{
  const s=makeScene(),ray=new THREE.Raycaster();for(const asset of s.assets.filter(a=>!a.pickable&&a.layer!=='Gameplay')){
-  s.world.getObjectByName(asset.name).traverse(o=>{if(o.isMesh){assert.equal(ray.layers.test(o.layers),false,asset.name+' intercepts picking');assert.equal(o.layers.isEnabled(1),true);}});
+  s.world.getObjectByName(asset.name).traverse(o=>{if(o.isMesh){assert.equal(ray.layers.test(o.layers),false,asset.name+' intercepts picking');assert.equal(o.visible,false,'duplicate visible source '+asset.name);}});
  }
+ const batch=s.world.getObjectByName('StaticArtBatch');assert.equal(batch.visible,true);assert.equal(batch.layers.isEnabled(1),true);assert.ok(s.batching.renderMeshes<s.batching.sourceMeshes);
+ const sourceTriangles=s.assets.filter(a=>a.layer!=='Gameplay').reduce((sum,a)=>{s.world.getObjectByName(a.name).traverse(o=>{if(o.isMesh)sum+=(o.geometry.index?o.geometry.index.count:o.geometry.attributes.position.count)/3;});return sum;},0);
+ const batchTriangles=batch.children.reduce((n,o)=>n+o.geometry.attributes.position.count/3,0);assert.equal(batchTriangles,sourceTriangles,'batch lost or duplicated geometry');
  s.rotor.traverse(o=>{if(o.isMesh)assert.equal(ray.layers.test(o.layers),true);});assert.equal(ray.layers.test(s.mask.layers),true);
  s.dispose();
 });
