@@ -2,6 +2,10 @@
 
 本分支提供“艺术家的房间 01”可玩美术样板：黄床红被、绿窗、蓝紫墙、暖色地板和分层桌椅；原 G2 解法与相机控制保留。**G2.5 HOLD：尚未正式验收。**
 
+**[打开 Quiet Arles 在线试玩](https://tony-zhang-notfound.github.io/Room-Monument-Valley/quiet-arles/)** · [下载单文件版](https://tony-zhang-notfound.github.io/Room-Monument-Valley/quiet-arles/ROOM_G2_Play.html) · [线上交互验证](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/actions/runs/39182575951)
+
+26 项测试、可复现构建及真实线上 Chrome 155 交互检查已通过。[线上截图与原始结果](evidence/quiet-arles/online/)独立保存。此预览与原 G2 共用兼容存档；查看默认构图可点“重新开始”。原试玩根路径、main 和冻结基线保持原样。
+
 ![Quiet Arles 实际运行画面](evidence/quiet-arles/after/default.png)
 
 [美术样板验收报告](docs/QUIET_ARLES_ACCEPTANCE.md) · [同视角前后对比](evidence/quiet-arles/before-after.png) · [床局部](evidence/quiet-arles/after/bed-detail.png) · [新九宫格](evidence/quiet-arles/nine-view-overview.png) · [资产清单](docs/quiet-arles-assets.json)

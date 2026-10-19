@@ -61,3 +61,14 @@ rAF 的约 16.64 ms 空闲调度间隔**不称作 60 FPS 渲染性能**；静态
 ## 阶段结论
 
 可玩美术样板的已测功能与结构检查通过；保留 G2.5 HOLD 和软件性能回归说明。作者视觉签核、物理桌面/触控设备性能与真人试玩未完成，不在本轮自动授予 GO。继续沿用已授权的测试部署，以独立 `/quiet-arles/` 子路径供审阅，原 G2 网址和根产物保持不变。最终线上 URL、产物与证据提交见部署交付记录。
+
+
+## 已完成的线上交付
+
+- **[Quiet Arles 试玩网站](https://tony-zhang-notfound.github.io/Room-Monument-Valley/quiet-arles/)**，实际在线而非源码页或本机预览。
+- 部署源提交：`a0f6de561e9f8a61e0802b952d074938080d5574`；Pages 产物提交：`afdd1cbd1850c534c43e9da3795fba841e95c87b`。
+- [Pages 发布](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/actions/runs/39182617539) 成功；[26 项测试/构建/线上浏览器 CI](https://github.com/Tony-Zhang-NotFound/Room-Monument-Valley/actions/runs/39182575951) 成功。
+- 实际 Chrome 155 打开目标子路径，确认 Quiet Arles variant 与床资产，验证 WebGL、旋转、上梯、视角、跨越、门、重玩/重置及下载 SHA256；没有页面异常或游戏资源失败。
+- [真实线上截图](../evidence/quiet-arles/online/game.png)、[原始线上结果](../evidence/quiet-arles/online/smoke.json)。独立证据分支提交为 `9f6ea4161142a291dc461ad4610c92ebaae2132c`。
+- 原根路径 `index.html`、`ROOM_G2_Play.html`、`deployment.json` 与原部署 `c141dd6` 逐字节一致。没有合并到 main，没有修改作品集仓库或云环境配置，没有上传输入参考图。
+- 子路径与原 G2 同源，故保留原兼容存档键；可用“重新开始”检查默认构图。桌面/手机物理设备性能、审美与真人试玩仍待作者验收。
