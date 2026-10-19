@@ -10,7 +10,7 @@ export const ARLES_LAYOUT=[
  {assetId:'frame_01',name:'ArlesLandscape',position:[2.75,3.65,-3.23],rotationY:0,layer:'Props',collision:false,pickable:false,state:'static'},
  {assetId:'frame_small',name:'ArlesPortrait',position:[-3.45,2.95,-3.23],rotationY:-.035,layer:'Props',collision:false,pickable:false,state:'static'}
 ];
-export const ARLES_PRESENTATION={name:'Quiet Arles',background:ARLES_PALETTE.background,keyColor:'#FFF1D8',keyIntensity:2.65,keyPosition:[-3,10,-3],sky:'#FFF7E8',ambientGround:'#C5BCD0',ambientIntensity:2.3,exposure:1.02,groundY:-.51,maskName:'灰绿色屏风'};
+export const ARLES_PRESENTATION={name:'Quiet Arles',background:ARLES_PALETTE.background,keyColor:'#FFF1D8',keyIntensity:2.65,keyPosition:[-3,10,-3],sky:'#FFF7E8',ambientGround:'#C5BCD0',ambientIntensity:2.3,exposure:1.02,shadowSize:1024,shadowExtent:8,groundY:-.48,maskName:'灰绿色屏风'};
 
 function createWorkshop(){
  const geometries=new Set(),materials=new Set(),cache=new Map(),mats=new Map();let disposed=false;

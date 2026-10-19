@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three.module.js';
 import {makeScene} from '../src/scene.mjs';
 import {POS,route,samplePath} from '../src/level.mjs';
+import {ARLES_PRESENTATION} from '../src/quiet-arles.mjs';
 
 test('Arles furniture is grounded, outside travel clearance and separate from loft supports',()=>{
  const s=makeScene();s.world.updateMatrixWorld(true);
+ assert.ok(Math.abs(new THREE.Box3().setFromObject(s.world.getObjectByName('Base')).min.y-ARLES_PRESENTATION.groundY)<1e-5,'plinth floats above background ground');
  const furniture=['ArlesBed','ArlesTable','ArlesChair'].map(n=>[n,new THREE.Box3().setFromObject(s.world.getObjectByName(n))]);
  for(const [name,b]of furniture){assert.ok(Math.abs(b.min.y)<1e-5,name+' floats above the floor');assert.ok(b.max.y>1,name+' is missing its upper structure');}
  for(const [from,to]of [['S','T'],['T','F'],['F','G']])for(let i=0;i<=200;i++){
@@ -46,4 +48,16 @@ test('scene disposal is idempotent and never releases another instance resources
 test('all Arles mesh attributes are finite with matte nonmetallic materials',()=>{
  const s=makeScene();s.world.traverse(o=>{if(o.isMesh){for(const key of ['position','normal'])assert.ok([...o.geometry.attributes[key].array].every(Number.isFinite),o.name+' invalid '+key);if(o.name.startsWith('Endpoint_'))assert.ok(o.material.isMeshBasicMaterial);else{assert.equal(o.material.metalness,0);assert.ok(o.material.roughness>=.75);}}});
  assert.deepEqual(s.player.position.toArray(),POS.S);s.dispose();
+});
+
+test('fitted shadow frustum contains every visible caster through all four rotor poses',()=>{
+ const s=makeScene(),light=new THREE.DirectionalLight();light.position.set(...ARLES_PRESENTATION.keyPosition);light.updateMatrixWorld(true);light.target.updateMatrixWorld(true);
+ const extent=ARLES_PRESENTATION.shadowExtent;Object.assign(light.shadow.camera,{left:-extent,right:extent,top:extent,bottom:-extent,near:.1,far:40});light.shadow.updateMatrices(light);const c=light.shadow.camera;
+ for(let turn=0;turn<4;turn++){
+  s.rotor.rotation.y=turn*Math.PI/2;s.world.updateMatrixWorld(true);
+  s.world.traverse(o=>{if(!o.isMesh||!o.castShadow)return;for(let p=o;p;p=p.parent)if(!p.visible)return;
+   const attr=o.geometry.attributes.position;for(let i=0;i<attr.count;i++){const p=new THREE.Vector3().fromBufferAttribute(attr,i).applyMatrix4(o.matrixWorld).applyMatrix4(c.matrixWorldInverse);assert.ok(Math.abs(p.x)<extent&&Math.abs(p.y)<extent&&-p.z>c.near&&-p.z<c.far,o.name+' shadow clipping');}
+  });
+ }
+ s.dispose();
 });
