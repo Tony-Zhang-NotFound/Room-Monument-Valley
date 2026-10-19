@@ -1,7 +1,8 @@
 import * as THREE from '../vendor/three.module.js';
 import {build,palette} from './assets-source.js';
 import {POS,MASK,VIEWS} from './level.mjs';
-export function makeScene(){
+import {applyQuietArles} from './quiet-arles.mjs';
+export function makeScene({style='quiet-arles'}={}){
  const world=new THREE.Group();world.name='Atrium_G2';
  const material={};for(const [name,c]of Object.entries(palette))material[name]=new THREE.MeshStandardMaterial({name:'MAT_'+name,color:c,roughness:1,metalness:0});
  function box(name,size,pos,mat='chalk'){const m=new THREE.Mesh(new THREE.BoxGeometry(...size),material[mat]);m.name=name;m.position.set(...pos);m.castShadow=m.receiveShadow=true;world.add(m);return m;}
@@ -23,7 +24,8 @@ export function makeScene(){
  const markers={};for(const name of ['T','F','G']){const m=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,.035,24),markerMaterial);m.name='Target_'+name;m.position.set(...POS[name]);m.position.y+=.025;m.userData.target=name;world.add(m);markers[name]=m;}
  const endPoints={};for(const name of ['A','B']){const marker=new THREE.Mesh(new THREE.SphereGeometry(.075,12,8),new THREE.MeshBasicMaterial({color:name==='A'?0x2e6862:0xce9a49}));marker.position.set(...POS[name]);marker.visible=false;marker.name='Endpoint_'+name;world.add(marker);endPoints[name]=marker;}
  world.traverse(o=>{if(o.isMesh){o.castShadow=o.receiveShadow=true;}});
- return {world,rotor,mask,player,door,markers,endPoints,material};
+ const parts={world,rotor,mask,player,door,markers,endPoints,material,style:'classic'};
+ return style==='classic'?parts:applyQuietArles(parts);
 }
 export function setPose(scene,state){scene.rotor.rotation.y=state.turn*Math.PI/2;scene.player.position.set(...POS[state.node]);scene.world.getObjectByName('LeftWall').visible=state.camera!==1;scene.world.updateMatrixWorld(true);}
-export function makeCamera(aspect=1,pose=0){const c=new THREE.OrthographicCamera(-7*aspect,7*aspect,7,-7,.1,100);const target=new THREE.Vector3(1.1,2,0);c.position.copy(target).add(new THREE.Vector3(...VIEWS[pose]).normalize().multiplyScalar(25));c.lookAt(target);c.updateMatrixWorld();c.updateProjectionMatrix();return c;}
+export function makeCamera(aspect=1,pose=0){const c=new THREE.OrthographicCamera(-7*aspect,7*aspect,7,-7,.1,100);c.layers.enable(1);const target=new THREE.Vector3(1.1,2,0);c.position.copy(target).add(new THREE.Vector3(...VIEWS[pose]).normalize().multiplyScalar(25));c.lookAt(target);c.updateMatrixWorld();c.updateProjectionMatrix();return c;}
